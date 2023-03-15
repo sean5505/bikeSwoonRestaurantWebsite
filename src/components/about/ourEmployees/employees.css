@@ -1,0 +1,56 @@
+.employees{
+     background-color: aqua;
+}
+.employeesHead{
+    text-align: center;
+    
+}
+.employeesHead h1{
+    margin: 0;
+    padding-top: 20px;
+    text-decoration: underline;
+    
+}
+
+.employeeList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.employee{
+    width:24%;
+    border: 2px solid black;
+    text-align: center;
+    margin:5px;
+}
+
+.employee:hover{
+    cursor: pointer;
+}
+
+
+
+
+.employeeImg{
+    width:100%;
+    height: 30vh;
+   
+}
+
+.employeeImg:hover{
+    transform: scale(1.1) rotate(-3deg);
+}
+
+
+
+.employeeDesc{
+    font-weight: bold;
+    color:purple;
+    background-color: black;
+}
+
+/* Add some media for responsiveness
+cause this is really ew on certain screens */ 

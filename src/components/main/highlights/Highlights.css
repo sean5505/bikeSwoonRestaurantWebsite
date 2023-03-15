@@ -1,0 +1,92 @@
+.highlights{
+    width:100%;
+    background-color: rgba(4, 4, 4, 0.456);
+    padding-top: 2px;
+    
+}
+
+.highlightsHead .sectionHead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid purple;
+}
+
+.sectionHead{
+    text-decoration: underline;
+}
+
+.orderButton{
+    display: flex;
+    justify-content: flex-end;
+    position: relative; /* so ugly */
+    bottom: 43px;
+    right: 50px;
+}
+
+.items{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    gap: 5px;
+  
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    border: solid 2px black;
+    text-align: center;
+}
+.item img{
+    width: 25vw;
+    height: 200px;
+}
+.itemHead{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+   
+}
+.itemDescription{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    flex-grow: 1;
+}
+
+.item .orderNow{
+    cursor: pointer;
+    transition: .5s;
+    border: 2px solid black;
+}
+
+.item .orderNow:hover{
+    font-size: 18px;
+    color:blue;
+   
+}
+
+#price{
+    color: lime;
+}
+
+@media (max-width:480px) {
+    .orderButton{
+        right: 0;
+    }
+   
+    .item img{
+        height: 100px;
+    }
+    .itemHead{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+  
+}

@@ -1,0 +1,69 @@
+.hero{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+   
+
+
+}
+
+
+.heroInfo{
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: scroll;
+  
+}
+
+
+.heroInfo .heading{
+    font-size: 40px;
+}
+
+.heroInfo .subHeading{
+    font-size: 28px;
+}
+
+.heroInfo .description{
+    font-size: 16px;
+}
+
+.heroInfo .heroButton{
+    font-size: 24px;
+   
+}
+
+.heroImg{
+    width: 50%;
+    height: 100%;
+    border: 2px solid black;
+  
+}
+
+@media (max-width:480px){
+    .heroInfo .heading{
+        font-size: 20px;
+    }
+    
+    .heroInfo .subHeading{
+        font-size: 16px;
+    }
+    
+    .heroInfo .description{
+        font-size: 12px;
+    }
+    
+    .heroInfo .heroButton{
+        font-size: 16px;
+       
+    }
+    
+
+}

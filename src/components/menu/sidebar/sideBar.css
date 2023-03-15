@@ -1,0 +1,28 @@
+.menuSideBar{
+    flex:1;
+    height: 100vh;
+    background-color: aquamarine;
+    position: sticky;
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.mealOptions{
+    display: flex;
+    flex-direction: column;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+@media (max-width:780px) { 
+    .menuSideBar{
+       display: none;
+    
+        
+    }
+    
+}
