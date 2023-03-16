@@ -13,7 +13,7 @@ export default function Home() {
     <>
         <Header/>
         {resData? ( 
-        <h2 style={{textAlign: 'center', backgroundColor: theme.primaryColor, color: theme.secondaryColor, height:'100%', margin: '0px', padding: '30px '}}>
+        <h2 className='submissionText' style={{textAlign: 'center', backgroundColor: theme.primaryColor, color: theme.secondaryColor,  margin: '0px', padding: '30px '}}>
           Hello {resData.name}!<br/>
           Your Reservation has been submitted and is being processed.<br/>
            Feel free to countinue browsing!</h2>)

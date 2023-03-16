@@ -5,6 +5,7 @@ import Header from '../components/header/Header'
 import { fetchAPI, submitAPI } from '../apiData'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/footer/Footer'
+import { DisabledByDefault } from '@mui/icons-material'
 
 
 function updateTimes(state, action){ // reducer function
@@ -44,6 +45,7 @@ export default function Reservations(props) {
     }
   }, [isFormSubmitted])
   
+  console.log(`dispatch is ${dispatch}`)
  
   return (
     <>

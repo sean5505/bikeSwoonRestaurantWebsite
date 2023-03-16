@@ -43,7 +43,17 @@
    text-decoration: underline;
 }
 
-
+@media (max-width:480px) {
+    .about-section{
+        flex-direction: column-reverse;
+    }
+    .rightContainer{
+        width: 100%;
+    }
+    .leftContainer{
+        width: 100%;      
+    }
+}
 
 
 

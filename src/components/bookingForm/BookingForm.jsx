@@ -11,7 +11,7 @@ const initialState = {
   date: "",
   time: "",
   guests: 1,
-  occasion: "",
+  dining: "",
   isNameValid: true,
   isEmailValid: true,
 };
@@ -29,8 +29,8 @@ function reducer(state, action) {
       return { ...state, time: action.payload };
     case "SET_GUESTS":
       return { ...state, guests: action.payload };
-    case "SET_OCCASION":
-      return { ...state, occasion: action.payload };
+    case "SET_DINING":
+      return { ...state, dining: action.payload };
     default:
       return state;
   }
@@ -43,8 +43,8 @@ function validateEmail(email) {
 
 export default function BookingForm(props) {
 
-  const contextValue = useContext(ThemeContext)
-  const { theme } = contextValue || {};
+  //const contextValue = useContext(ThemeContext)
+ // const { theme } = contextValue || {};
   const [state, dispatch] = useReducer(reducer, initialState);
   const contextValue2 = useContext(MyContext)
   const {resData, setResData} = contextValue2 || {}
@@ -56,9 +56,9 @@ export default function BookingForm(props) {
     date: state.date,
     time: state.time,
     guests: state.guests,
-    occasion: state.occasion
+    dining: state.dining
   }
- 
+  console.log(typeof props.dispatch)
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -69,7 +69,7 @@ export default function BookingForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.submitForm();
+    props.submitForm(userData);
     setResData(userData)
   };
 
@@ -77,13 +77,15 @@ export default function BookingForm(props) {
   return (
     <>
 
-      <div className="container" style={{ backgroundColor: theme.primaryColor }}>
-        <div className="bookingForm" style={{ backgroundColor: theme.secondaryColor, color: theme.primaryColor }}>
+      <div className="container">
+        <div className="bookingForm" >
           <form style={{ display: "grid", maxWidth: 200, gap: 20 }} onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
+              name="name"
+              data-testid = 'name-test'
               className={state.isNameValid ? "" : "invalid"}
               value={state.name}
               onChange={(e) => dispatch({ type: "SET_NAME", payload: e.target.value })}
@@ -97,6 +99,7 @@ export default function BookingForm(props) {
               type="email"
               id="res-email"
               className={state.isEmailValid ? "" : "invalid"}
+              data-testid = 'email-test'
               value={state.email}
               onChange={(e) => dispatch({ type: "SET_EMAIL", payload: e.target.value })}
               placeholder="Contact Me @"
@@ -107,7 +110,7 @@ export default function BookingForm(props) {
             <input type="date" id="res-date"data-testid = 'date-test' value={state.date} required onChange={handleDateChange} />
 
             <label htmlFor="res-time">Choose time</label>
-            <select id="res-time " value={state.time} onChange={(e) => dispatch({ type: "SET_TIME", payload: e.target.value })} disabled={state.date === ""}>
+            <select id="res-time " value={state.time} data-testid = 'time-test' onChange={(e) => dispatch({ type: "SET_TIME", payload: e.target.value })} disabled={state.date === ""}>
               {props.availableTimes &&
                 props.availableTimes.map((time) => (
                   <option key={time}>{time}</option>
@@ -122,25 +125,27 @@ export default function BookingForm(props) {
                       min= {1}
                       max= {4}
                       id="guests"
+                      data-testid = 'guests-test'
                       value = {state.guests}
                       onChange ={(e) => dispatch({type: 'SET_GUESTS', payload:e.target.value})}
                       />
               
               
-                  <label htmlFor="occasion">Occasion</label>
+                  <label htmlFor="dining">Dining Options</label>
                   <select
-                      id="occasion"
-                      value = {state.occasion}
-                      onChange = {(e) => dispatch({type: 'SET_OCCASION', payload:e.target.value})}
+                      id="dining"
+                      data-testid = 'dining-test'
+                      value = {state.dining}
+                      onChange = {(e) => dispatch({type: 'SET_DINING', payload:e.target.value})}
                       >
-                    <option>Birthday</option>
-                    <option>Anniversary</option>
-                    <option>Neither</option>
+                    <option>Upper</option>
+                    <option>Lower</option>
+                    <option>Take Out</option>
                   </select>
-                      <input className="formSubmitButton" type="submit" value="Make Your reservation" aria-label="On Click" />
+                      <input className="formSubmitButton" type="submit"   data-testid = 'button-test' value="Make Your reservation" aria-label="On Click" />
                 </form>
                   </div>
-                  <div className="bookingRight" style = {{color: theme.secondaryColor}}>
+                  <div className="bookingRight">
                           <h3 className="bookingLogo">BikeSwoon</h3>
                           <h5>CHOOSE AN AVAILABLE TIME SLOT AND SUBMIT YOUR RESERVATION!</h5>
                       </div>
