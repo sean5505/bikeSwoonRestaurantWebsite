@@ -1,21 +1,22 @@
 import React from 'react'
 import {Star} from '@mui/icons-material'
+import style from './Testimonials.module.css'
 
 export default function Testimonial(props) {
   return (
-    <div className="review">
-                <div className="container">
-                    <img src={props.testimonial.img} alt=""  />
-                    <h3>{props.testimonial.name}</h3>
+    <li className={style.review}>
+                <div className={style.container}>
+                    <img className = {style.reviewImg} src={props.testimonial.img} alt=""  />
+                    <h3 className={style.reviewName}>{props.testimonial.name}</h3>
                 </div>
-                <h3 className='rating'>
+                <h3 className={style.rating}>
                     <Star/>
                     <Star/>
                     <Star/>
                     <Star/>
                     <Star/>
                     </h3>
-                <p className='description'>{props.testimonial.review}</p>
-            </div>
+                <p className={style.description}>{props.testimonial.review}</p>
+            </li>
   )
 }

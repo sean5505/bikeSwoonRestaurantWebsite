@@ -1,10 +1,13 @@
-
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../../ThemeContext';
 import MenuItem from './MenuItem';
 import { menuItems } from './menuItemsData';
 import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
-import './mainContainer.css';
+import style from './mainContainer.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../../features/cart/cartSlice';
+
+import { nanoid } from '@reduxjs/toolkit';
 
 function sortByPrice(items, sortOrder, searchText) {
   let sortedItems = [...items];
@@ -16,24 +19,17 @@ function sortByPrice(items, sortOrder, searchText) {
   sortedItems.sort((a, b) => {
     const priceA = parseFloat(a.price);
     const priceB = parseFloat(b.price);
-    if (priceA < priceB) {
-      return sortOrder ? 1 : -1;
-    } else if (priceA > priceB) {
-      return sortOrder ? -1 : 1;
-    } else {
-      return 0;
-    }
+    return sortOrder ? priceB - priceA : priceA - priceB;
   });
 
   return sortedItems;
 }
 
-
 function filterItems(items, searchText) {
   if (!searchText) {
     return items;
   }
-  const filteredItems = [...items].filter(item =>
+  const filteredItems = items.filter(item =>
     item.type.toLowerCase().includes(searchText.toLowerCase())
   );
   return filteredItems;
@@ -44,71 +40,115 @@ export default function MainContainer() {
   const [sortOrder, setSortOrder] = useState(false);
   const [sortedItems, setSortedItems] = useState(menuItems);
   const [searchText, setSearchText] = useState('');
+  const [activeButton, setActiveButton] = useState('All');
+  const dispatch = useDispatch()
+  
+
+  const updateCart = (item) => { //cart from store 
+    dispatch(addToCart(item))
+  }
+
+
+
+  /* really gonna need to know redux... FUCKKCKCKCK idk im interested
+  but learning it seems tedious although necessary for my goals */
+  /*const updateCart = (item) => {
+    console.log(`a new cart item has been created for ${item.name}`)
+    setCartItems([...cartItems, {
+     id:cartItems.length,
+     name: item.name ,
+     price: item.price,
+     img: item.img
+    } 
+   ])
+  
+   }*/
 
   const handleSortClick = () => {
     const newSortOrder = !sortOrder;
-    const newSortedItems = sortByPrice(menuItems, newSortOrder, searchText); 
+    const newSortedItems = sortByPrice(menuItems, newSortOrder, searchText);
     setSortedItems(newSortedItems);
     setSortOrder(newSortOrder);
-  }
-  
+   
+  };
 
   const showAll = () => {
     setSortedItems(menuItems);
-    setSearchText('')
+    setSearchText('');
+    setActiveButton('All');
   };
 
-  const filterByType = type => {
+  const filterByType = (type) => {
     setSortedItems(filterItems(menuItems, type));
-    setSearchText(type)
+    setSearchText(type);
+    setActiveButton(type);
   };
 
   return (
+    <>
     <section
-      className='menuMainContainer'
+      className={style.menuMainContainer}
       style={{ backgroundColor: theme.secondaryColor }}
     >
       <h2
-        className='menuHeader'
+        className={style.menuHeader}
         style={{ backgroundColor: theme.primaryColor, color: theme.secondaryColor }}
       >
         Main Menu
       </h2>
-      <div className='sortContainer'>
-        <button className='sortButton' onClick={showAll}>
+      <div className={style.sortContainer}>
+        <button
+          className={style.sortButton}
+          onClick={showAll}
+          style={{ backgroundColor: activeButton === 'All' ? 'red' : '' }}
+        >
           All
         </button>
-        <button className='sortButton' onClick={() => filterByType('Main')}>
+        <button
+          className={style.sortButton}
+          onClick={() => filterByType('Main')}
+          style={{ backgroundColor: activeButton === 'Main' ? 'red' : '' }}
+        >
           Main
         </button>
         <button
-          className='sortButton'
+          className={style.sortButton}
           onClick={() => filterByType('Appetizers')}
+          style={{ backgroundColor: activeButton === 'Appetizers' ? 'red' : '' }}
         >
           Appetizers
         </button>
-        <button className='sortButton' onClick={() => filterByType('Specials')}>
+        <button
+          className={style.sortButton}
+          onClick={() => filterByType('Specials')}
+          style={{ backgroundColor: activeButton === 'Specials' ? 'red' : '' }}
+        >
           Specials
         </button>
-        <button className='sortButton' onClick={handleSortClick}>
-          {!sortOrder ? (
+        <button
+          className={style.sortButton}
+          onClick={handleSortClick}
+          
+        >
+          {sortOrder ? (
             <>
-              Sort by Descending
-              <ArrowDownward />
+              Sort Price by Ascending
+              <ArrowUpward />
             </>
           ) : (
             <>
-              Sort by Ascending
-              <ArrowUpward />
+              Sort Price by Descending
+              <ArrowDownward />
             </>
           )}
         </button>
       </div>
-      <div className='menuItems'>
+      <ul className={style.menuItems}>
         {sortedItems.map(item => (
-          <MenuItem key={item.id} item={item} />
+          <MenuItem key={item.id} item={item} updateCart = {updateCart} />
         ))}
-      </div>
+      </ul>
     </section>
+    </>
   );
 }

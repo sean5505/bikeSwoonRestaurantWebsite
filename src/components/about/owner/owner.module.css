@@ -28,11 +28,9 @@
 
 .imageContainer{
     width: 40%;
-    display: flex;
 }
 .ownerImg{
-    width: 100%;
-   
+    width: 100%; 
 }
 
 @media (max-width:480px) {

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 import { ThemeContext } from "../../ThemeContext";
-import "./BookingForm.css";
+import style from "./BookingForm.module.css";
 import MyContext from "../../MyContext";
 
 
@@ -48,7 +48,7 @@ export default function BookingForm(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const contextValue2 = useContext(MyContext)
   const {resData, setResData} = contextValue2 || {}
-  console.log(`value of resData is ${resData}`)
+  //console.log(`value of resData is ${resData}`)
 
   const userData = {
     name: state.name,
@@ -58,7 +58,7 @@ export default function BookingForm(props) {
     guests: state.guests,
     dining: state.dining
   }
-  console.log(typeof props.dispatch)
+  //console.log(typeof props.dispatch)
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -77,8 +77,8 @@ export default function BookingForm(props) {
   return (
     <>
 
-      <div className="container">
-        <div className="bookingForm" >
+      <div className={style.container}>
+        <div className={style.bookingForm} >
           <form style={{ display: "grid", maxWidth: 200, gap: 20 }} onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input
@@ -86,7 +86,7 @@ export default function BookingForm(props) {
               id="name"
               name="name"
               data-testid = 'name-test'
-              className={state.isNameValid ? "" : "invalid"}
+              className={state.isNameValid ? "" : style.invalid}
               value={state.name}
               onChange={(e) => dispatch({ type: "SET_NAME", payload: e.target.value })}
               placeholder="My name is..."
@@ -98,7 +98,7 @@ export default function BookingForm(props) {
             <input
               type="email"
               id="res-email"
-              className={state.isEmailValid ? "" : "invalid"}
+              className={state.isEmailValid ? "" : style.invalid}
               data-testid = 'email-test'
               value={state.email}
               onChange={(e) => dispatch({ type: "SET_EMAIL", payload: e.target.value })}
@@ -142,13 +142,13 @@ export default function BookingForm(props) {
                     <option>Lower</option>
                     <option>Take Out</option>
                   </select>
-                      <input className="formSubmitButton" type="submit"   data-testid = 'button-test' value="Make Your reservation" aria-label="On Click" />
+                      <input className={style.formSubmitButton} type="submit"   data-testid = 'button-test' value="Make Your reservation" aria-label="On Click" />
                 </form>
                   </div>
-                  <div className="bookingRight">
-                          <h3 className="bookingLogo">BikeSwoon</h3>
+                  <aside className={style.bookingRight}>
+                          <h3 className={style.bookingLogo}>BikeSwoon</h3>
                           <h5>CHOOSE AN AVAILABLE TIME SLOT AND SUBMIT YOUR RESERVATION!</h5>
-                      </div>
+                      </aside>
                    
                   </div>
                   

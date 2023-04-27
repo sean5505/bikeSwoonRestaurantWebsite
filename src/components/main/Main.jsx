@@ -7,7 +7,7 @@ import Testimonials from './testimonials/Testimonials'
 export default function Main() {
   return (
     <>
-    <Hero/>
+    <Hero/> 
     <Highlights/>
     <Testimonials/>
     <About/>

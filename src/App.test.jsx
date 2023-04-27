@@ -1,8 +1,10 @@
-import { fireEvent, getByLabelText, getByRole, getByTestId, render, screen } from '@testing-library/react';
+import { fireEvent, getByLabelText, getByRole, getByTestId, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import BookingForm from './components/bookingForm/BookingForm';
 import { initializeTimes } from './pages/Reservations';
 import userEvent from '@testing-library/user-event';
+import Home from './pages/Home';
+import Highlights from './components/main/highlights/Highlights';
 
 
 /*test('test to see if the expected times are in the document', () => {
@@ -18,13 +20,16 @@ import userEvent from '@testing-library/user-event';
   });
 });*/
 
-test('inputs are in the document; a data-testID is given to each label element', () => {
-  const inputTestIds = ['name-test', 'email-test', 'date-test', 'time-test', 'guests-test', 'dining-test', 'button-test'];
-  const { getByTestId } = render(<BookingForm />);
+describe('BookingForm', () => {
+  it('inputs are in the document; a data-testID is given to each label element', () => {
+  
+    const inputTestIds = ['name-test', 'email-test', 'date-test', 'time-test', 'guests-test', 'dining-test', 'button-test'];
+    const { getByTestId } = render(<BookingForm />);
 
-  inputTestIds.forEach((testId) => {
-    const input = getByTestId(testId);
-    expect(input).toBeInTheDocument();
+    inputTestIds.forEach((testId) => {
+      const input = getByTestId(testId);
+      expect(input).toBeInTheDocument();
+    });
   });
 });
 
@@ -37,6 +42,16 @@ test('inputs are in the document; a data-testID is given to each label element',
     const dateInput = getByTestId('date-test');
     fireEvent.change(dateInput, { target: { value: '2023-03-20' } });
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'UPDATE_TIMES', payload: '2023-03-20' });
-  });
+  }); 
+
+  test('Order Now button renders Menu Page', ()=> {
+    render(<Highlights/>)
+    const orderButton = screen.getByText('Order Now')
+    userEvent.click(orderButton)
+
+    waitFor(() => 
+    expect(screen.getByText('Main Menu')).toBeInTheDocument()
+    )
+  })
 
 

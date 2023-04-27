@@ -1,30 +1,35 @@
 import React, { useContext } from 'react'
-import "./Highlights.css"
+import style from "./Highlights.module.css"
 import {Highlightss} from './highlightData'
 import Highlight from './Highlight'
 import {Link} from 'react-router-dom'
 import { ThemeContext } from '../../../ThemeContext'
+import FramerMotion from '../../../FramerMotion'
 
 export default function Highlights() {
-  const {theme} = useContext(ThemeContext)
+  const {theme = {}} = useContext(ThemeContext)
   return (
-    <section className='highlights' style = {{backgroundColor: theme.secondaryColor}} >
-        <header className='highlightsHead' style = {{backgroundColor:theme.primaryColor, color: theme.secondaryColor}}>
-          <div className="sectionHead">
+    <>
+    <FramerMotion>
+    <section className={style.highlights} style = {{backgroundColor: theme.secondaryColor}} >
+        <header className={style.highlightsHead} style = {{backgroundColor:theme.primaryColor, color: theme.secondaryColor}}>
+          <div className={style.sectionHead}>
             <h1>Specials</h1>
             </div>
-            <div className='orderButton'>
+            <div className={style.orderButton}>
             <Link to='/menu'>
-            <button className='highlightsHeadButton'>Order Now!</button>
+            <button className={style.highlightsHeadButton}>Order Now!</button>
             </Link>
             </div>
         </header>
-        <div className="items">
+        <ul className={style.items}>
         {Highlightss.map((highlight) => (
                <Highlight key = {highlight.id} highlight ={highlight} />
             ))} 
             
-       </div>
+       </ul>
     </section>
+    </FramerMotion>
+    </>
   )
 }

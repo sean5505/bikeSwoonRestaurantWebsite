@@ -24,18 +24,23 @@
 
 
 .review .container{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
-.review img{
-    width: 50%;
+.reviewImg{
+    width: 100%;
     height: 150px;
     padding: 10px 0;
 }
 
-.review .description{
+.reviewName{
+    text-align: center;
+}
 
+.review .description{
     text-align: center;
 }
 
@@ -54,11 +59,12 @@
       
     }
     .reviews{
-        display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        width: 100%;
+  
+       
        
     }
     .review .container{
@@ -67,9 +73,13 @@
     }
    
     .review img{
-        width: 100%;
-        height: auto;
+        width: 70%;
         padding: 10px 0;
+    }
+    .review{
+        width: 30vw;
+        height: 50vh;
+
     }
     
 }

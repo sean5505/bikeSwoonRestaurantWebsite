@@ -22,7 +22,6 @@
     
 }
 
-
 .menuItems{
     display: flex;
     flex-direction: column;
@@ -33,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 3px solid black;
     box-sizing: border-box;
 }
 
@@ -53,7 +52,9 @@
         justify-content: center
     }
     .menuItem {
-        display: flex;
+        width:80%;
+        margin-left: 40px; /*ugly workaround but at the same time
+                            is it really?*/
         flex-direction: column;
         gap:20px;
     }

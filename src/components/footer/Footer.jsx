@@ -1,49 +1,88 @@
 import React, { useContext } from 'react'
-import "./Footer.css"
+import style from "./Footer.module.css"
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../../ThemeContext'
+import FramerMotion from '../../FramerMotion'
 
 export default function Footer() {
 
   const {theme} = useContext(ThemeContext)
   return (
-    <footer id='footer' style = {{backgroundColor: theme.secondaryColor}}>
-      <div className="item1">
-      <img className='footerImg' src="/assets/owner.webp" alt=""  />
-      </div>
-      <>
-  <div className="linksContainer">
-  <ul className="item2">
-  <div className="listElements">
-    <li className="listHead">Doormat Navigation</li>
-    <li><Link className="door-link" to="/">Home</Link></li>
-    <li><Link className="door-link" to="/about">About</Link></li>
-    <li><Link className="door-link" to="/menu">Menu</Link></li>
-    <li><Link className="door-link" to="/reservations">Reservations</Link></li>
-    <li><Link className="door-link" to="/order">Order</Link></li>
-    <li><Link className="door-link" to="/login">Login</Link></li>
-    </div>
-  </ul>
-  <ul className="item2">
-  <div className="listElements">
-    <li className="listHead">Contact</li>
-    <li>Address</li>
-    <li>Phone Number</li>
-    <li>Email</li>
-    </div>
-  </ul>
-  <ul className="item2">
-  <div className="listElements">
-    <li className="listHead">Socials</li>
-    <li>Twitter</li>
-    <li>Instagram</li>
-    <li>Facebook</li>
-    </div>
-  </ul>
-  </div>
-</>
+    <>
+    <FramerMotion>
 
+      
+  <footer style={{ backgroundColor: theme.secondaryColor }}>
+    
+  <section className={style.item1}>
+    <img className={style.footerImg} src="/assets/owner.webp" alt="" />
+  </section>
+  
 
-    </footer>
+  <section className={style.linksContainer}>
+    <ul className={style.linkElement}>
+      <li className={style.listElements}>
+        <h3 className={style.listHead}>Doormat Navigation</h3>
+        <ul>
+          <li>
+            <Link className={style.doorLink} to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className={style.doorLink} to="/about">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link className={style.doorLink} to="/menu">
+              Menu
+            </Link>
+          </li>
+          <li>
+            <Link className={style.doorLink} to="/reservations">
+              Reservations
+            </Link>
+          </li>
+          <li>
+            <Link className={style.doorLink} to="/order">
+              Order
+            </Link>
+          </li>
+          <li>
+            <Link className={style.doorLink} to="/login">
+              Login
+            </Link>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul className={style.linkElement}>
+      <li className={style.listElements}>
+        <h3 className={style.listHead}>Contact</h3>
+        <ul>
+          <li>Address</li>
+          <li>Phone Number</li>
+          <li>Email</li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul className={style.linkElement}>
+      <li className={style.listElements}>
+        <h3 className={style.listHead}>Socials</h3>
+        <ul>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>Facebook</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</footer>
+
+    </FramerMotion>
+    </>
   )
 }

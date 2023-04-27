@@ -6,6 +6,7 @@ import { fetchAPI, submitAPI } from '../apiData'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/footer/Footer'
 import { DisabledByDefault } from '@mui/icons-material'
+import FramerMotion from '../FramerMotion'
 
 
 function updateTimes(state, action){ // reducer function
@@ -45,12 +46,14 @@ export default function Reservations(props) {
     }
   }, [isFormSubmitted])
   
-  console.log(`dispatch is ${dispatch}`)
+  //console.log(`dispatch is ${dispatch}`)
  
   return (
     <>
       <Header/>  
+      <FramerMotion>
      <BookingForm availableTimes={availableTimes} dispatch = {dispatch} submitForm = {submitForm}  />
+     </FramerMotion>
      <Footer/>
     </>
   )

@@ -61,6 +61,11 @@ select{
 
 .invalid{ /* doesnt work, may need to create an isInvalid function */
     border: 2px solid red;
+    position: relative;
+}
+
+.invalid::after{
+    content: 'invalid'
 }
 
 @media (max-width:480px) {
@@ -69,6 +74,12 @@ select{
         flex-direction: column-reverse;
         
     }
+    .bookingForm{
+        width:80%;
+        border-radius: 50px;
+        
+    }
+    
     
   
     

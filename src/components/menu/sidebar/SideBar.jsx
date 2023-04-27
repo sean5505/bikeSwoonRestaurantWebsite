@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './sideBar.css'
+import style from './sideBar.module.css'
 import { ThemeContext } from '../../../ThemeContext'
 import {Tapas} from '@mui/icons-material';
 
@@ -13,19 +13,20 @@ export default function SideBar(props) {
 
 
   return (
-     <section className='menuSideBar' style={{backgroundColor: theme.tertiaryColor}}>
-     <ul className='mealOptions'>
-        <li className="mealOption">
-        <label htmlFor="main">Main <Tapas className = 'sideBarIcon'/>
+    <>
+     <section className={style.menuSideBar} style={{backgroundColor: theme.tertiaryColor}}>
+     <ul className={style.mealOptions}>
+        <li className={style.mealOption}>
+        <label htmlFor="main">Main <Tapas className = {style.sideBarIcon}/>
         <input type="radio" name="option" id ='main' value="main" />
         </label>
         </li>
-        <li className="mealOption">
+        <li className={style.mealOption}>
         <label htmlFor="appetizer">Appetizers
         <input type="radio" name="option" id='appetizer' value="appetizer"/>
         </label>
         </li>
-        <li className="mealOption">
+        <li className={style.mealOption}>
         <label htmlFor="specials">Specials
         <input type="radio" name="option" id='specials' value = "specials"/>
         </label>
@@ -35,5 +36,6 @@ export default function SideBar(props) {
 
      </ul>
     </section>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useReducer, useState } from 'react';
 import { ThemeContext } from '../../../ThemeContext';
-import './About.css';
+import style from './About.module.css';
+import FramerMotion from '../../../FramerMotion';
 
 const imageSrc = 'assets/upperDining.jpeg';
 
@@ -24,13 +25,13 @@ function updateImg(state, action) {
 }
 
   const handleLowerClick = () => {
-    setIsLowerActive(!isLowerActive);
+    setIsLowerActive(true);
     setIsUpperActive(false)
     dispatch({ type: 'LOWERDINING' });
   };
 
   const handleUpperClick = () => {
-    setIsUpperActive(!isUpperActive);
+    setIsUpperActive(true);
     setIsLowerActive(false)
     dispatch({ type: 'UPPERDINING' });
   };
@@ -39,14 +40,16 @@ function updateImg(state, action) {
 
 
   return (
+    <>
+    <FramerMotion>
     <section
-      className="about-section"
+      className={style.aboutSection}
       style={{ backgroundColor: theme.secondaryColor, color: theme.primaryColor }}
     >
-      <div className="leftContainer">
-        <h1 className="heading">Our Dining Options</h1>
+      <div className={style.leftContainer}>
+        <h1 className={style.heading}>Our Dining Options</h1>
        
-        <h4 className="description">
+        <article className={style.description}>
           Welcome to BikeSwoon, the perfect destination for food lovers and anyone looking to
           indulge in a truly remarkable dining experience. Our mission is simple: to offer delicious,
           high-quality food in a warm and welcoming atmosphere.
@@ -62,11 +65,11 @@ function updateImg(state, action) {
           a night out with friends, we promise to exceed your expectations and leave you with a lasting
           impression. Come and experience the magic of BikeSwoon for yourself - we can't wait
           to welcome you!
-        </h4>
+        </article>
       </div>
-      <div className="rightContainer">
-        <img src={state.imageSrc} alt="dining image" />
-        <div className="buttons">
+      <div className={style.rightContainer}>
+        <img className={style.rightContainerImg} src={state.imageSrc} alt="dining image" />
+        <div className={style.buttons}>
           <button onClick={handleUpperClick}
            style={{ backgroundColor: isUpperActive ? '#333333' : 'teal', color: isUpperActive ? '#fff' : '#000' }}>
             Upper Dining</button>
@@ -78,5 +81,7 @@ function updateImg(state, action) {
         </div>
       </div>
     </section>
+    </FramerMotion>
+    </>
   );
 }

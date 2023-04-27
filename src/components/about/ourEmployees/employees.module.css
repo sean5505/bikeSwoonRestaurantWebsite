@@ -21,17 +21,11 @@
 }
 
 .employee{
-    width:24%;
+    width:27vw;
     border: 2px solid black;
     text-align: center;
-    margin:5px;
+    margin:15px;
 }
-
-.employee:hover{
-    cursor: pointer;
-}
-
-
 
 
 .employeeImg{
@@ -54,3 +48,9 @@
 
 /* Add some media for responsiveness
 cause this is really ew on certain screens */ 
+@media (max-width:480px) {
+    .employee{
+        width:80%;
+ 
+    }
+}

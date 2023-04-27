@@ -1,38 +1,55 @@
-import React, { useContext, useState } from 'react'
-import './rightContainer.css'
-import { RemoveCircleOutline } from '@mui/icons-material'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
+import style from './rightContainer.module.css'
+import { RemoveCircleOutline, RemoveShoppingCart } from '@mui/icons-material'
 import { ThemeContext } from '../../../ThemeContext';
+import CartItem from './CartItem';
+import { useSelector } from 'react-redux';
+
+
 
 
 
 export default function RightContainer(props) {
-  const [quantity, setQuantity] = useState('1')
   const {theme} = useContext(ThemeContext)
-  
-  const [items, setItems] = useState([]);
+  const cart = useSelector((state) => state.cart)
+  console.log(cart)
+  const [totalPrice, setTotalPrice] = useState(0);
 
  
-  return ( //ok i see an idea
-    <>
-     <section className='menuRightContainer' style={{backgroundColor: theme.primaryColor, color: theme.secondaryColor}}>
-       <h2 className='menuRightHeader'>Your Cart</h2>
-       <div className="cartItems">
-        <div className="cartItem">
-          <img className="cartItemImg" src="./assets/banner.jpg" alt='just a placeholder'/>
-          <div className="cartItemPrice">$272</div>
-          <div className="cartItemQuantity">1</div>
-          <div className="removeFromCart">
-          <RemoveCircleOutline/>
-          </div>
-       </div>
-      </div>
-      
-      
-       
-    <div className="orderTotal">Order Total: </div>
-    <button className='orderNow'>Place Your Order</button>
+  useEffect(() => {
+    let price = 0;
+    for (const item of cart) {
+      price += parseFloat(item.price);
+    }
+    setTotalPrice(parseFloat(price.toFixed(2)));
+    console.log( totalPrice +' is the total price')
+  }, [cart]);
+ 
+  //this is going to take a while... perhaps a complete overhaul sigh what am I not understanding?
+  /* ok so this is the idea, redux -- utlize cart in this component -- do a map loop
+  for each cartItem, WHERE I THEN call the cart item component which I already
+  have styled just need to figure out redux and have like a bigger cart for the
+  order page, idk bout that page yet but imma need to be big brained */
 
-    </section>
+ 
+  return (
+    <>
+      <section className={style.menuRightContainer} style={{backgroundColor: theme.primaryColor, color: theme.secondaryColor}}>
+        <h2 className={style.menuRightHeader}>Your Cart</h2>
+        <ul className={style.cartItems}>
+          {cart.length === 0 ? (
+            <p>The cart is empty</p>
+          ) : (
+            <>
+              {cart.map((item) => <CartItem key={item.id} item={item} />)}
+              <p>Total Items: {cart.length}</p>
+              <p className={style.orderTotal}>Order Total: $ {typeof totalPrice === 'number' ? totalPrice.toFixed(2) : '0.00'}</p>
+              <button className={style.orderNow}>Place Your Order</button>
+            </>
+          )}
+        </ul>
+       
+      </section>
     </>
-  )
-}
+  );
+}  

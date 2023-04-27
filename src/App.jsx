@@ -10,6 +10,7 @@ import Order from './pages/Order';
 import { ThemeContextProvider } from './ThemeContext';
 import MyContext from './MyContext';
 import { createContext, useState } from 'react';
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"></link>
 
 
@@ -26,8 +27,10 @@ function App() {
 
   return (
     <>
+     
    <MyContext.Provider value = {{resData, setResData}} >
     <ThemeContextProvider>
+   
     <Router>
       <Routes>
         <Route path='/' element = {<Home/>}/>
@@ -39,8 +42,10 @@ function App() {
           <Route path = '/about' element = {<About/>}/>
       </Routes>
     </Router>
+    
     </ThemeContextProvider>    
     </MyContext.Provider>
+   
     </>
   );
 }

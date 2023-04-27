@@ -28,7 +28,7 @@ export default function Menu() {
     <div style={{display:'flex', width:'100%'}}>
       
       <MainContainer/>
-      <RightContainer />
+      <RightContainer/>
     </div>
     
     <Footer/>

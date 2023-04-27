@@ -2,12 +2,12 @@
     flex:3;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .menuRightHeader{
     text-decoration: underline;
+    text-align: center;
 }
 
 .cartItems{
@@ -19,7 +19,7 @@
 
 .cartItem{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 2px solid purple;
     border-top: 2px solid purple ;
 
@@ -30,8 +30,7 @@
     border-right: 2px solid purple;
     display: flex;
     align-items: center;
-   
-   
+
 }
 
 .cartItem .cartItemImg{
@@ -39,11 +38,13 @@
     height: 100px;
 }
 
-.cartItemQuantity input{
-    border: none;
-    outline: none;
-    background-color: transparent;
-   
+.countButton{
+    height:25px;
+}
+
+.removeFromCart:hover{
+    cursor: pointer;
+    color:red;
 }
 .orderNow{
     margin-top: 20px;
