@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
   return {
-    base: '/sean5505/bikeSwoonRestaurantWebsite',
+  
     build: {
       outDir: 'build',
      
