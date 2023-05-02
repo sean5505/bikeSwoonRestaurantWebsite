@@ -16,11 +16,10 @@ export default function Navbar(props) {
     <nav ref ={props.navRef}>
       <ul className={style.navLinks}>
         <li> 
-        <NavLink 
-           className={({ isActive}) =>
+        <NavLink className={({ isActive}) =>
                  isActive ? style.navLinkActive : style.navLink} 
            to ="/" >Home 
-           </NavLink>
+          </NavLink>
         </li>
         <li>
         <NavLink className={({ isActive}) =>

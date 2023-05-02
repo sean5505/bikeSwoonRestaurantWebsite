@@ -65,6 +65,7 @@
     }
     .menuMainContainer{
         width: 100%;
+        flex: 200;
         
       
     }

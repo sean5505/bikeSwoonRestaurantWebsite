@@ -4,8 +4,8 @@
     flex-direction: column;
     overflow-y: scroll;
     height: 100vh;
+    transition: 1s
    
-
 }
 
 .menuRightHeader{
@@ -55,7 +55,7 @@
 
 @media (max-width:480px) {
     .menuRightContainer{
-        display: none;
+        transform: translateX(100vh);
        
     }
     
