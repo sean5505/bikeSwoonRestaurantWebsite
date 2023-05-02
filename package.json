@@ -3,52 +3,55 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-      "@emotion/react": "^11.10.6",
-      "@emotion/styled": "^11.10.6",
-      "@mui/icons-material": "^5.11.9",
-      "@reduxjs/toolkit": "^1.9.5",
-      "@testing-library/user-event": "^13.5.0",
-      "formik": "^2.2.9",
-      "framer-motion": "^10.12.2",
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0",
-      "react-intersection-observer": "^9.4.3",
-      "react-router-dom": "^6.8.1",
-      "react-scroll": "^1.8.9",
-      "react-type-animation": "^3.0.1",
-      "web-vitals": "^2.1.4"
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/icons-material": "^5.11.9",
+        "@reduxjs/toolkit": "^1.9.5",
+        "@testing-library/user-event": "^13.5.0",
+        "formik": "^2.2.9",
+        "framer-motion": "^10.12.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-intersection-observer": "^9.4.3",
+        "react-router-dom": "^6.8.1",
+        "react-scripts": "^5.0.1",
+        "react-scroll": "^1.8.9",
+        "react-toastify": "^9.1.2",
+        "react-type-animation": "^3.0.1",
+        "web-vitals": "^2.1.4"
     },
     "scripts": {
-      "start": "vite",
-      "build": "vite build",
-      "serve": "vite preview",
-      "test": "vitest"
+        "start": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
+        "test": "vitest --coverage"
     },
     "eslintConfig": {
-      "extends": [
-        "react-app",
-        "react-app/jest"
-      ]
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
     },
     "browserslist": {
-      "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all"
-      ],
-      "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-      ]
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "devDependencies": {
-      "@testing-library/jest-dom": "^5.16.5",
-      "@testing-library/react": "^14.0.0",
-      "@vitejs/plugin-react": "^4.0.0",
-      "jsdom": "^21.1.1",
-      "vite": "^4.3.1",
-      "vitest": "^0.30.1"
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^14.0.0",
+        "@vitejs/plugin-react": "^4.0.0",
+        "@vitest/coverage-c8": "^0.30.1",
+        "jest": "^27.5.1",
+        "jsdom": "^21.1.1",
+        "vite": "^4.3.1",
+        "vitest": "^0.30.1"
     }
-  }
-  
+}

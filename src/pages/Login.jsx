@@ -1,8 +1,8 @@
 import React from 'react'
-import Footer from '../components/footer/Footer'
+import Footer from '../components/Footer'
 import Header from '../components/header/Header'
-import LoginForm from '../components/loginForm/LoginForm'
-import FramerMotion from '../FramerMotion'
+import LoginForm from '../components/LoginForm'
+import FramerMotion from '../components/FramerMotion'
 
 export default function Login() {
   return (

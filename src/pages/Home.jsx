@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
-import Footer from '../components/footer/Footer'
+import Footer from '../components/Footer'
 import Header from '../components/header/Header'
-import Main from '../components/main/Main'
-import MyContext from '../MyContext'
-import { ThemeContext } from '../ThemeContext'
-import {useInView} from 'react-intersection-observer'
-import FramerMotion from '../FramerMotion'
+import Main from '../components/Homepage/Main'
+import MyContext from '../components/context/MyContext'
+import { ThemeContext } from '../components/context/ThemeContext'
+import FramerMotion from '../components/FramerMotion'
 
 
 export default function Home() {

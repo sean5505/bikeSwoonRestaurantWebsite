@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import Footer from '../components/footer/Footer'
+import Footer from '../components/Footer'
 import Header from '../components/header/Header'
-import { ThemeContext } from '../ThemeContext'
+import { ThemeContext } from '../components/context/ThemeContext'
 
 export default function Order() {
     const {theme} = useContext(ThemeContext)

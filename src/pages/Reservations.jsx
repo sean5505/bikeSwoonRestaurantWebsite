@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useReducer, useState} from 'react'
-import BookingForm from '../components/bookingForm/BookingForm'
+import BookingForm from '../components/BookingForm'
 import Header from '../components/header/Header'
-import { fetchAPI, submitAPI } from '../apiData'
+import { fetchAPI, submitAPI } from '../data/apiData'
 import { useNavigate } from 'react-router-dom'
-import Footer from '../components/footer/Footer'
-import { DisabledByDefault } from '@mui/icons-material'
-import FramerMotion from '../FramerMotion'
+import Footer from '../components/Footer'
+import FramerMotion from '../components/FramerMotion'
 
 
 function updateTimes(state, action){ // reducer function
@@ -28,7 +27,7 @@ function updateTimes(state, action){ // reducer function
     }
   }
 
-export default function Reservations(props) {
+export default function Reservations() {
   const [availableTimes, dispatch] = useReducer(updateTimes, null, initializeTimes);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 

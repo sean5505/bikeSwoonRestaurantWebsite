@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import Reservations from './pages/Reservations';
 import BookingConfirmation from './pages/BookingConfirmation';
@@ -7,9 +7,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import About from './pages/About';
 import Order from './pages/Order';
-import { ThemeContextProvider } from './ThemeContext';
-import MyContext from './MyContext';
-import { createContext, useState } from 'react';
+import { ThemeContextProvider } from './components/context/ThemeContext';
+import MyContext from './components/context/MyContext';
+import {  useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer} from 'react-toastify';
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"></link>
 
@@ -17,20 +19,26 @@ import { createContext, useState } from 'react';
 
 function App() {
 
-  const [resData, setResData] = useState(false)
-
-
-  
-  /*const handleUserData = (newUser) => { //this is really ugly but it works \(-_-)/ tried to use contextApi but was missing something ...gonna implement the same functionality using redux in the future... FOXED WITH USECONTEXT I FIGURED OUT THE MISSING PIECE, I NEEDED TO CONSIDER THE APP COMPONENT AS THE PARENT
-    setUserData(newUser);
-  }*/
+  const [resData, setResData] = useState(false) //resData represents the reservation data from the user
 
   return (
     <>
      
    <MyContext.Provider value = {{resData, setResData}} >
     <ThemeContextProvider>
-   
+    
+    <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover={false}
+    theme="dark"
+    />
     <Router>
       <Routes>
         <Route path='/' element = {<Home/>}/>

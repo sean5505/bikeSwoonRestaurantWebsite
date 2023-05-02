@@ -1,0 +1,81 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+  html:hover{
+    cursor: url('../assets/my-mouse-pointer.png'), auto ;/*used online tool*/ 
+  }
+
+button{
+    background-color: teal;
+    border-radius: 50px;
+
+}
+
+button:hover{
+    cursor: url('../assets/cursor.png'), pointer;
+    color:white;
+    box-shadow: 0 0 5px white;
+}
+
+input:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+
+  }
+
+input[type = 'text']:hover,
+input[type = 'email']:hover,
+input[type = 'password']:hover{
+    cursor: text;
+  }
+
+.reservationConfirmed{
+    height:60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+ ul{
+    margin: 0;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 7.5px;
+ 
+}
+::-webkit-scrollbar:hover{
+    cursor: pointer;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: grey;
+    border-radius: 50px;
+}
+
+@media (max-width:480px) {
+
+    h2{
+        font-size: 16px;
+    }
+    h4{
+        font-size: 12px;
+    }
+    p{
+        font-size: 12px;
+    }
+    .submissionText{
+        font-size: 8px;
+    }
+}
