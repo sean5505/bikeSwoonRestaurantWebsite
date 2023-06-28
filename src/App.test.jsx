@@ -1,8 +1,9 @@
-import jest from 'jest';
+
 import {describe, expect, it} from "vitest"
 
-import { getByRole, render, getByTestId, fireEvent, queryByText } from "@testing-library/react";
-import BookingForm from './components/bookingForm/BookingForm'
+import {  render, fireEvent, } from "@testing-library/react";
+import BookingForm from "./components/BookingForm";
+
 
 
 
@@ -59,7 +60,15 @@ describe('BookingForm', () => {
 describe('BookingForm', () => {
   it('inputs are in the document; a data-testID is given to each label element', () => {
   
-    const inputTestIds = ['name-test', 'email-test', 'date-test', 'time-test', 'guests-test', 'dining-test', 'button-test'];
+    const inputTestIds = [
+      'name-test', 
+      'email-test', 
+      'date-test', 
+      'time-test', 
+      'guests-test', 
+      'dining-test', 
+      'button-test'
+    ];
     const { getByTestId } = render(<BookingForm />);
 
     inputTestIds.forEach((testId) => {
@@ -69,7 +78,7 @@ describe('BookingForm', () => {
   });
 });
 
-describe('djidfjdf', () => {
+describe('when the date is chosen, a list of available unselected times are shown', () => {
   it('launches bookingpage on click'), () => {
     const expectedTimes = ['5:00pm EST','5:30pm EST','8:30pm EST','10:30pm EST',  ];
 

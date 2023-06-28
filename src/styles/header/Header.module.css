@@ -1,0 +1,51 @@
+.headerComp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 98;
+  position: sticky;
+  top: 0;
+  border: 2px solid black;
+}
+
+.headerLogo {
+  width: 20%;
+  flex-grow: 1;
+}
+
+.headerNavBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBtn {
+  padding: 0.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: none;
+}
+
+.cart {
+  position: relative;
+}
+
+.cartTotal {
+  position: absolute;
+  bottom: 0;
+  right: 0.1rem;
+  color: red;
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navBtn,
+  .cartTotal {
+    display: block;
+  }
+  .responsiveNav {
+    transform: none;
+  }
+}

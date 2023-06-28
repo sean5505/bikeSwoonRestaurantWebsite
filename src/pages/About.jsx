@@ -1,19 +1,18 @@
 import React from 'react'
-import Employees from '../components/Employees'
-import Owner from '../components/Owner'
-import Promotional from '../components/Promotional'
-import Footer from '../components/Footer'
-import Header from '../components/header/Header'
-
+import Employees from '../components/about/Employees'
+import Owner from '../components/about/Owner'
+import Promotional from '../components/about/Promotional'
+import Layout from '../components/Layout'
 
 export default function About() {
   return (
     <>
-    <Header/>
+    <Layout>
     <Promotional/>
     <Owner/>
     <Employees/>
-    <Footer/>
+    </Layout>
+  
     </>
   )
 }

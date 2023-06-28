@@ -1,86 +1,54 @@
-.container{
-    display: flex;
-    align-items: center;
-    background-color: rgb(7, 12, 38);
 
+.bookingForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(190, 41, 236);
+ 
 }
 
+form {
+  padding: .7rem 0;
 
-.bookingRight{
-    flex:3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: rgb(190, 41, 236);
-}
-
-.bookingLogo{
-    font-size: 32px;
-}
-
-.bookingForm{
-    display: flex;
-    flex:6;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    background-color: rgb(190, 41, 236);
-    
-}
-
-form{
-    padding: 10px 0;
 }
 label {
-    font-weight: 900;
-    font-size: 24px;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }
 
 input,
-select{
-    padding: 2px ;
-    border: 2px solid black;
-    border-radius: 15px;
-    text-align: center;
+select {
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  text-align: center;
 }
 
-.formSubmitButton{
-    font-size: 16px;
+.formSubmitButton {
+  border-radius: 50px;
+  background-color: teal;
+  padding: .7rem 0;
+}
+
+.formSubmitButton:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.invalid {
+  /* doesnt work, may need to create an isInvalid function */
+  border: 2px solid red;
+  position: relative;
+}
+
+.invalid::after {
+  content: "invalid";
+}
+
+@media (max-width: 768px) {
+  .bookingForm {
     border-radius: 50px;
-    background-color: teal ;
-    height: 40px;
-}
-
-.formSubmitButton:hover{
-    cursor: pointer;
-    color: white;
     
-}
-
-.invalid{ /* doesnt work, may need to create an isInvalid function */
-    border: 2px solid red;
-    position: relative;
-}
-
-.invalid::after{
-    content: 'invalid'
-}
-
-@media (max-width:480px) {
-    .container{
-        display: flex;
-        flex-direction: column-reverse;
-        
-    }
-    .bookingForm{
-        width:80%;
-        border-radius: 50px;
-        
-    }
-    
-    
-  
-    
+  }
 }

@@ -1,82 +1,43 @@
-footer{
-    display: flex;
-    justify-content: center;
-    width:100%;
-    border: 2px solid black;
-    overflow-x:scroll;
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid black;
 }
 
-.item1{
-    display: flex;
+.footerImg {
+  width: 10rem;
+  padding: 0 1rem;
+}
+
+.listElements {
+  display: flex;
+  gap: 2rem;
+}
+
+.listElement, .listElement li {
+  list-style: none;
 }
 
 
-.footerImg{
-    width: 150px;
+.listHead {
+  text-decoration: underline;
 }
 
-.linksContainer{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.doorLink {
+  text-decoration: none;
+  color: black;
 }
 
-.linkElement {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-    
+.doorLink:hover {
+  color: blue;
 }
 
-.listHead{
-    text-decoration: underline;
-}
-
-.listElements{
-    display: flex;
-    flex-direction: column;
-    padding-left: 5px;
-    
-}
-
-.linkElement li{
-    list-style: none;
-    font-size: 16px;
-}
-
-.doorLink{
-    text-decoration: none;
-    color:black
-}
-
-.doorLink:hover{
-    color:blue;
-}
-
-.listHead{
-    font-size: 18px;
-   
-}
-
-@media (max-width:480px) {
-    footer{
-        justify-content:flex-start;
-    }
-
-    .footerImg{
-        width: 30vw;
-    }
-    .linkElement {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-    }
 
 
-   
-    .listHead{
-        font-size: 12px;
-    }
+@media (max-width: 768px) {
+
+  .footerImg {
+    display: none;
+  }
 }

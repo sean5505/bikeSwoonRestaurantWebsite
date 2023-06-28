@@ -1,30 +1,41 @@
-import React, { useContext } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/header/Header'
-import Main from '../components/Homepage/Main'
-import MyContext from '../components/context/MyContext'
-import { ThemeContext } from '../components/context/ThemeContext'
-import FramerMotion from '../components/FramerMotion'
-
+import { useContext } from "react";
+import MyContext from "../components/context/MyContext";
+import { ThemeContext } from "../components/context/ThemeContext";
+import Layout from "../components/Layout";
+import Hero from "../components/Homepage/Hero";
+import Highlights from "../components/Homepage/Highlights";
+import Testimonials from "../components/Homepage/Testimonials";
+import Dining from "../components/Homepage/Dining";
 
 export default function Home() {
-  const {resData} = useContext(MyContext)
-  const {theme} = useContext(ThemeContext)
+  const { resData } = useContext(MyContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
-        <Header/>
-        <FramerMotion>
-        {resData? ( 
-        <h2 className='submissionText' style={{textAlign: 'center', backgroundColor: theme.primaryColor, color: theme.secondaryColor,  margin: '0px', padding: '30px ', border: `4px solid ${theme.secondaryColor}`}}>
-          Hello {resData.name}!<br/>
-          Your Reservation has been submitted and is being processed.<br/>
-           Feel free to countinue browsing!</h2>)
-            : ''}
-            </FramerMotion>
-        <Main/>
-    
-        <Footer />
-     </>
-  )
+      <Layout>
+        {resData && (
+          <h2
+            style={{
+              textAlign: "center",
+              backgroundColor: theme.primaryColor,
+              color: theme.secondaryColor,
+              margin: "0px",
+              padding: "2rem ",
+              border: `4px solid ${theme.secondaryColor}`,
+            }}
+          >
+            Hello {resData.name}!<br />
+            Your Reservation has been submitted and is being processed.
+            <br />
+            Feel free to countinue browsing!
+          </h2>
+        )}
+        <Hero />
+        <Highlights />
+        <Testimonials />
+        <Dining />
+      </Layout>
+    </>
+  );
 }

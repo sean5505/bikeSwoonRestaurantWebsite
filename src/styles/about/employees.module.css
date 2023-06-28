@@ -1,0 +1,41 @@
+
+.employees .employeesHead {
+  text-align: center;
+}
+
+.employeesHead h1 {
+  margin: 0;
+  padding-top: 1.2rem;
+  text-decoration: underline;
+}
+.employees main {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.employees .employeeList {
+  width: 85%;
+}
+
+.employee {
+  border: 2px solid black;
+  text-align: center;
+
+}
+
+.employeeImg {
+  width: 100%;
+  height: 14rem;
+}
+
+.employeeImg:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.employeeDesc {
+  color: purple;
+  background-color: black;
+}
+
+

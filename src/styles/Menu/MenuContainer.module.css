@@ -1,0 +1,63 @@
+.menuMainContainer {
+  height: 80vh; /* can edit out later */
+  overflow-y: scroll;
+}
+
+.menuHeader {
+  text-align: center;
+}
+
+.sortContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortButton {
+  display: flex; /* setting container to flex to align logo with text */
+}
+
+.menuItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.menuItem {
+  width: 47vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid black;
+}
+
+.itemImg {
+  width: 12rem;
+  height: 12rem;
+}
+
+.itemPrice {
+  color: lime;
+}
+
+
+@media (max-width: 768px) {
+  
+  .menuItem {
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .itemImg {
+    width: 100%;
+  }
+  .menuMainContainer {
+    width: 100%;
+    flex: 200;
+  }
+}

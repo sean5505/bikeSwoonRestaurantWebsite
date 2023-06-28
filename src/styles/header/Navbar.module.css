@@ -1,0 +1,68 @@
+.navLinks {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  transition: 0.5s;
+}
+
+.navLinkActive {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: red;
+  transition: 0.5s;
+}
+
+.navLink:hover,
+.navLinkActive:hover {
+  color: blue;
+  text-decoration: underline;
+  cursor: url("../public/assets/cursor.png"), pointer;
+}
+
+.navBtn {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 1024px) {
+  .navBtn {
+    visibility: visible;
+    opacity: 1;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: teal;
+    transition: 0.5s;
+    transform: translateX(-100vh);
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+  }
+  .closeButton {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+  }
+}
+
+
