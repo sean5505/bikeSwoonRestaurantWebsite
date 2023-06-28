@@ -1,12 +1,7 @@
-# Updates
-- Converted CSS files to module-based CSS files to mitigate the risk of class name conflicts and enhance code maintainability during iterative development.
-
-- Migrated project from Create React App (CRA) to Vite.
-
-- Employed Redux as a state management tool for the shopping cart functionality.
-
-- Replaced some div tags with semantic tags to improve code readability and maintainability
-
-- Some UI/UX changes
-
-
+# TO DO
+- Cart Functionality: fix order total display upon item quantity changes
+- Migrate from JSX to typescript, css to scss
+- Login Authetntication?
+- Implement RTK Query for caching state
+- Psuedo Payment Page? --stripe
+- UI/UX improvements 
