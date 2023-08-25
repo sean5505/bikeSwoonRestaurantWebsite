@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import style from "../../styles/Homepage/Highlights.module.css";
-import { highlightData } from "../../data/highlightData";
+import style from "./Highlights.module.css";
+import { highlightData } from "./highlightData";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../context/ThemeContext";
-import Carousel from "../Carousel";
+import { ThemeContext } from "../../context/ThemeContext";
+import Carousel from "../../Carousel";
 
 
 const createHighlight = (highlight, key) => {

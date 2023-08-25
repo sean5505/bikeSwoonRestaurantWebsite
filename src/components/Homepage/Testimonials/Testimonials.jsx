@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import style from "../../styles/Homepage/Testimonials.module.css";
-import { ThemeContext } from "../context/ThemeContext";
-import { testimonialData } from "../../data/testimonialData";
+import style from "./Testimonials.module.css";
+import { ThemeContext } from "../../context/ThemeContext";
+import { testimonialData } from "./testimonialData";
 import { Star } from "@mui/icons-material";
-import Carousel from "../Carousel";
+import Carousel from "../../Carousel";
 
 
 const createTestimonial = (testimonial, key) => {

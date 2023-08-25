@@ -16,5 +16,4 @@ function InView({ children }) {
   );
 }
 
-/*wouldve been really disgusting to individually include in every single component that i want the effect on as it is so i figured i would do something similar to if im using contextProvider although i still kind of did this... is there a better way?*/
 export default InView;

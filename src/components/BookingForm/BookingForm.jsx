@@ -1,6 +1,6 @@
 import React, { useContext, useReducer } from "react";
-import style from "../styles/BookingForm.module.css";
-import MyContext from "./context/MyContext";
+import style from "./BookingForm.module.css";
+import MyContext from "../context/MyContext";
 
 
 //should migrate over to react-hook-form for better form validation? 

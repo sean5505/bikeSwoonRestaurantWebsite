@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useReducer, useState } from "react";
-import BookingForm from "../components/BookingForm";
-import { fetchAPI, submitAPI } from "../data/apiData";
+
+import { fetchAPI, submitAPI } from "./reservationData";
 import { useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
-import style from "../styles/pages/Reservations.module.css"
+import Layout from "../../components/Layout";
+import style from "./Reservations.module.css"
+import BookingForm from "../../components/BookingForm/BookingForm";
 
 function updateTimes(state, action) {
   // reducer function
@@ -47,7 +48,7 @@ export default function Reservations() {
     }
   }, [isFormSubmitted]);
 
-  //console.log(`dispatch is ${dispatch}`)
+ 
 
   return (
     <>

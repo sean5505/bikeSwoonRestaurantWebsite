@@ -1,7 +1,8 @@
 import React from 'react'
-import Header from './header/Header'
-import Footer from './Footer'
+import Header from './header/Header/Header'
+
 import InView from './InView'
+import Footer from './Footer/Footer'
 
 export default function Layout({children}) {
   return (

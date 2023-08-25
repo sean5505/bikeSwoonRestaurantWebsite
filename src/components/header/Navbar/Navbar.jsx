@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "../../styles/header/Navbar.module.css";
+import style from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import { Close } from "@mui/icons-material";
 

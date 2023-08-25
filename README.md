@@ -53,13 +53,12 @@ In conclusion, this project served as a valuable platform for me to apply and va
 
 ---
 ## Future Plans
+- UI/UX/Responsive improvements
+- Code Optimization
 - Cart Functionality: fix order total display upon item quantity changes
 - Implement at least 1 Unit Test for primary components
 - Replace dependicies such as React-Slider with original code
-- Migrate to React-Hook-Form in the bookingForm component
-- Migrate from JSX to typescript, css to scss
 - Login Authetntication?
 - Implement RTK Query for caching state?
 - Psuedo Payment Page? --stripe
-- UI/UX/Responsive improvements
-- Code Optimization
+

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import style from "../../styles/about/promotional.module.css";
-import { ThemeContext } from "../context/ThemeContext";
+import style from "./promotional.module.css";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function Promotional() {
   const { theme } = useContext(ThemeContext);

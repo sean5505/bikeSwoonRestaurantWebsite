@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import style from "../../styles/Homepage/Hero.module.css";
-import { ThemeContext } from "../context/ThemeContext";
+import style from "./Hero.module.css";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function Hero() {
   const { theme } = useContext(ThemeContext);

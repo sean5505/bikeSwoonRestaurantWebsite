@@ -1,10 +1,10 @@
 import React, { useContext} from "react";
 import { Link } from "react-router-dom";
-import MyContext from "../components/context/MyContext";
-import { ThemeContext } from "../components/context/ThemeContext";
-import Layout from "../components/Layout";
-import ResSubmission from "../components/ResSubmission";
-import style from "../styles/pages/BookingConfirmation.module.css"
+import MyContext from "../../components/context/MyContext";
+import { ThemeContext } from "../../components/context/ThemeContext";
+import Layout from "../../components/Layout";
+import ResSubmission from "../../components/ResSubmission";
+import style from "./BookingConfirmation.module.css"
 
 export default function BookingConfirmation() {
   const { theme } = useContext(ThemeContext);

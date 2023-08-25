@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from "react";
-import Navbar from "./Navbar";
-import style from "../../styles/header/Header.module.css";
+import Navbar from "../Navbar/Navbar";
+import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { Menu, ShoppingCart } from "@mui/icons-material";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { useSelector } from "react-redux";
 
 export default function Header() {

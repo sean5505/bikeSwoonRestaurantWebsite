@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { employeeData } from "../../data/employeeData.js";
-import style from "../../styles/about/employees.module.css";
-import { ThemeContext } from "../context/ThemeContext.jsx";
-import Carousel from "../Carousel.jsx";
+import { employeeData } from "./employeeData";
+import style from "./employees.module.css";
+import { ThemeContext } from "../../context/ThemeContext.jsx";
+import Carousel from "../../Carousel.jsx";
 
 const createEmployee = (user, key) => {
   const { theme } = useContext(ThemeContext);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "../styles/loginForm.module.css";
+import style from "./loginForm.module.css";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate} from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";

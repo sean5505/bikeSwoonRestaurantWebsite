@@ -1,9 +1,10 @@
-import LoginForm from "../components/LoginForm";
+
 import { Star } from "@mui/icons-material";
 import Layout from "../components/Layout";
-import style from "../styles/loginForm.module.css";
+import style from "../components/LoginForm/LoginForm.module.css";
 import { useContext } from "react";
 import { ThemeContext } from "../components/context/ThemeContext";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 export default function Login() {
   const { theme } = useContext(ThemeContext);

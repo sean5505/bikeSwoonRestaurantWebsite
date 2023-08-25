@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import MenuItem from "./MenuItem";
-import { menuItems } from "../../data/menuItemsData";
+import { menuItems } from "./menuItemsData";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
-import style from "../../styles/Menu/MenuContainer.module.css";
+import style from "./MenuContainer.module.css";
 
 function sortByPrice(items, sortOrder, searchText) {
   let sortedItems = [...items];

@@ -1,7 +1,7 @@
-import "./styles/App.css";
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Reservations from "./pages/Reservations";
-import BookingConfirmation from "./pages/BookingConfirmation";
+import Reservations from "./pages/Reservations/Reservations";
+import BookingConfirmation from "./pages/BookingConfirmed/BookingConfirmation";
 import Menu from "./pages/Menu";
 import Home from "./pages/Home";
 import Login from "./pages/Login";

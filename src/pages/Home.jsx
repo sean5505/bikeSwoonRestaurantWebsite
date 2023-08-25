@@ -2,10 +2,10 @@ import { useContext } from "react";
 import MyContext from "../components/context/MyContext";
 import { ThemeContext } from "../components/context/ThemeContext";
 import Layout from "../components/Layout";
-import Hero from "../components/Homepage/Hero";
-import Highlights from "../components/Homepage/Highlights";
-import Testimonials from "../components/Homepage/Testimonials";
-import Dining from "../components/Homepage/Dining";
+import Hero from "../components/Homepage/Hero/Hero";
+import Highlights from "../components/Homepage/Highlights/Highlights";
+import Testimonials from "../components/Homepage/Testimonials/Testimonials";
+import Dining from "../components/Homepage/Dining/Dining";
 
 export default function Home() {
   const { resData } = useContext(MyContext);

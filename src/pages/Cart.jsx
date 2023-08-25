@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import CartContainer from "../components/cartItems/CartContainer";
+import CartContainer from "../components/Cart/CartContainer";
 
 export default function Order() {
   return (

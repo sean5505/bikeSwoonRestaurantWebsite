@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../../styles/Menu/MenuContainer.module.css";
+import style from "./MenuContainer.module.css";
 
 export default function MenuItem(props) {
   return (

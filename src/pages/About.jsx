@@ -1,8 +1,9 @@
 import React from 'react'
-import Employees from '../components/about/Employees'
-import Owner from '../components/about/Owner'
-import Promotional from '../components/about/Promotional'
 import Layout from '../components/Layout'
+import Promotional from '../components/about/Promotional/Promotional'
+import Owner from '../components/about/Owner/Owner'
+import Employees from '../components/about/Employees/Employees'
+
 
 export default function About() {
   return (

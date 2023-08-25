@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import style from "../../styles/cartItems/Cart.module.css";
+import style from "./Cart.module.css";
 import { ThemeContext } from "../context/ThemeContext";
 import CartItem from "./CartItem";
 import { useSelector } from "react-redux";
@@ -11,6 +11,7 @@ export default function CartContainer() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   console.log(cart);
+
   /* ok so this is for any additions/deletions to the cart */
   useEffect(() => {
     let price = 0;
@@ -21,11 +22,16 @@ export default function CartContainer() {
   }, [cart.length]);
 
   //what about changes to the quantity?
-  const updateTotal = (quantity) => {
+  const updateTotal = (newItemPrice) => {
+    cart.forEach((item) => { 
+      setTotalPrice(totalPrice )
+
+    })
    
-
-
+   
   };
+
+  console.log(totalPrice)
   return (
     <>
       <section

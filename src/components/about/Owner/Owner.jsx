@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import style from "../../styles/about/owner.module.css";
+import { ThemeContext } from "../../context/ThemeContext";
+import style from "./owner.module.css";
 
 export default function Owner() {
   const { theme } = useContext(ThemeContext);

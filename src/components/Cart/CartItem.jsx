@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "../../styles/cartItems/Cart.module.css";
+import style from "./Cart.module.css";
 import { RemoveShoppingCart } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { deleteFromCart } from "../../features/cart/cartSlice";
@@ -12,13 +12,13 @@ export default function CartItem(props) {
   // for itemQuantity input
   const handleCountChange = (e) => {
     setCount(e.target.value);
- 
   };
 
   //for the itemPrice considering the itemQuantity
   useEffect(() => {
-    setItemPrice(Number(Math.round(props.item.price * count * 100) / 100 || 0));
-    props.updateTotal(itemPrice)
+    const newItemPrice = Number(Math.round(props.item.price * count * 100) / 100 || 0)
+    setItemPrice(newItemPrice);
+    props.updateTotal(newItemPrice)
   }, [count]);
 
   return (

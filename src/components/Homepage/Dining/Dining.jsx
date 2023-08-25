@@ -1,6 +1,6 @@
 import React, { useContext, useReducer, useState } from 'react';
-import { ThemeContext } from '../context/ThemeContext'
-import style from '../../styles/Homepage/Dining.module.css';
+import { ThemeContext } from '../../context/ThemeContext'
+import style from './Dining.module.css';
 
 const imageSrc = 'assets/upperDining.jpeg';
 
