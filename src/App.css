@@ -12,6 +12,29 @@ html:hover {
   cursor: url("../assets/my-mouse-pointer.png"), auto; /*used online tool*/
 }
 
+form {
+  padding: .7rem 0;
+
+}
+
+form > input, form > select {
+  width: 12em;
+}
+label {
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+
+
+input,
+select {
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  text-align: center;
+}
 button {
   background-color: teal;
   border-radius: 2rem;

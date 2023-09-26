@@ -1,180 +1,169 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./BookingForm.module.css";
-import MyContext from "../context/MyContext";
-
-
-//should migrate over to react-hook-form for better form validation? 
-const initialState = {
-  name: "",
-  email: "",
-  date: "",
-  time: "",
-  guests: 1,
-  dining: "",
-  isNameValid: true,
-  isEmailValid: true,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "SET_NAME":
-      return {
-        ...state,
-        name: action.payload,
-        isNameValid: action.payload.length >= 3,
-      };
-    case "SET_EMAIL":
-      return {
-        ...state,
-        email: action.payload,
-        isEmailValid: validateEmail(action.payload),
-      };
-    case "SET_DATE":
-      return { ...state, date: action.payload };
-    case "SET_TIME":
-      return { ...state, time: action.payload };
-    case "SET_GUESTS":
-      return { ...state, guests: action.payload };
-    case "SET_DINING":
-      return { ...state, dining: action.payload };
-    default:
-      return state;
-  }
-}
-
-function validateEmail(email) {
-  const regex = /^\S+@\S+\.\S+$/;
-  return regex.test(email);
-}
+import {  ReservationContext } from "../../context/AppContext";
+import { getAuth } from "firebase/auth";
+import { useForm } from "react-hook-form";
 
 export default function BookingForm(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const userContext = useContext(MyContext);
+  const { setResData } = useContext(ReservationContext);
 
-  const { setResData } = userContext || {};
+  const auth = getAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues: {
+      Name: auth.currentUser? auth.currentUser.displayName : "",
+      Email: auth.currentUser ? auth.currentUser.email : " ",
+      Date: "",
+      Time: "",
+      Guests: 1,
+      Dining: "",
+    },
+  });
 
-  const userData = {
-    name: state.name,
-    email: state.email,
-    date: state.date,
-    time: state.time,
-    guests: state.guests,
-    dining: state.dining,
-  };
-  //console.log(typeof props.dispatch)
 
-  const handleDateChange = (e) => {
+
+  const dateValue = watch("Date", "");
+
+  function handleDateChange(e) {
     const selectedDate = e.target.value;
-    dispatch({ type: "SET_DATE", payload: selectedDate });
     const action = { type: "UPDATE_TIMES", payload: selectedDate };
     props.dispatch(action);
-  };
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.submitForm(userData);
-    setResData(userData);
-  };
+  function onSubmit(data) {
+    console.log(data);
+    props.submitForm(data);
+    setResData(data);
+    closeModal();
+  }
 
+  
   return (
     <>
-      <div className={style.bookingForm}>
-        <form
-          style={{ display: "grid", maxWidth: 200, gap: 20 }}
-          onSubmit={handleSubmit}
-        >
-          <label htmlFor="name">Name</label>
+      <form className={style.bookingForm} onSubmit={handleSubmit(onSubmit)}>
+        <>
+          <label htmlFor="res-name">Name</label>
           <input
+            {...register("Name", {
+              required: { value: true, message: "Required" },
+              minLength: {
+                value: 6,
+                message:
+                  "Please add at least 6 characters for Name Identification",
+              },
+            })}
             type="text"
-            id="name"
-            name="name"
+            id="res-name"
             data-testid="name-test"
-            className={state.isNameValid ? "" : style.invalid}
-            value={state.name}
-            onChange={(e) =>
-              dispatch({ type: "SET_NAME", payload: e.target.value })
-            }
-            placeholder="My name is..."
-            required
-            minLength={3}
+            className={errors.Name ? style.invalid : ""}
           />
+          {errors.Name ? (
+            <span className={style.error}>{errors.Name?.message}</span>
+          ) : null}
+        </>
 
+        <>
           <label htmlFor="res-email"> Email</label>
           <input
-            type="email"
+            {...register("Email", {
+              required: { value: true, message: "Required" },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Invalid Email Format",
+              },
+            })}
+            type="text"
             id="res-email"
-            className={state.isEmailValid ? "" : style.invalid}
+            className={errors.Email ? style.invalid : ""}
             data-testid="email-test"
-            value={state.email}
-            onChange={(e) =>
-              dispatch({ type: "SET_EMAIL", payload: e.target.value })
-            }
-            placeholder="Contact Me @"
-            required
           />
+          {errors.Email ? (
+            <span className={style.error}>{errors.Email?.message}</span>
+          ) : null}
+        </>
 
+        <>
           <label htmlFor="res-date">Date</label>
           <input
+            {...register("Date", {
+              required: { value: true, message: "Required" },
+              onChange: (e) => {
+                handleDateChange(e);
+                console.log("changed occured");
+              },
+            })}
             type="date"
             id="res-date"
             data-testid="date-test"
-            value={state.date}
-            required
-            onChange={handleDateChange}
+            className={errors.Date ? style.invalid : ""}
           />
+          {errors.Date ? (
+            <span className={style.error}>{errors.Date?.message}</span>
+          ) : null}
+        </>
 
+        <>
           <label htmlFor="res-time">Time</label>
           <select
+            {...register("Time", {
+              required: { value: true, message: "Required" },
+              disabled: dateValue === "",
+            })}
             id="res-time "
-            value={state.time}
             data-testid="time-test"
-            onChange={(e) =>
-              dispatch({ type: "SET_TIME", payload: e.target.value })
-            }
-            disabled={state.date === ""}
           >
             {props.availableTimes &&
               props.availableTimes.map((time) => (
                 <option key={time}>{time}</option>
               ))}
           </select>
+        </>
 
-          <label htmlFor="guests">Number of guests</label>
+        <>
+          <label htmlFor="res-guests">Number of guests</label>
           <input
+            {...register("Guests", {})}
             type="number"
             placeholder={1}
             min={0}
             max={4}
-            id="guests"
+            id="res-guests"
             data-testid="guests-test"
-            value={state.guests}
-            onChange={(e) =>
-              dispatch({ type: "SET_GUESTS", payload: e.target.value })
-            }
           />
+        </>
 
-          <label htmlFor="dining">Dining Options</label>
+        <>
+          <label htmlFor="res-dining">Dining Options</label>
           <select
-            id="dining"
+            {...register("Dining", {
+              required: { value: true, message: "Required" },
+            })}
+            id="res-dining"
             data-testid="dining-test"
-            value={state.dining}
-            onChange={(e) =>
-              dispatch({ type: "SET_DINING", payload: e.target.value })
-            }
+            className={errors.Dining ? style.invalid : ""}
           >
             <option>Upper</option>
             <option>Lower</option>
             <option>Take Out</option>
           </select>
-          <input
-            className={style.formSubmitButton}
-            type="submit"
-            data-testid="button-test"
-            value="Make Your reservation"
-            aria-label="On Click"
-          />
-        </form>
-      </div>
+          {errors.Dining ? (
+            <span className={style.error}>{errors.Dining?.message}</span>
+          ) : null}
+        </>
+
+        <input
+          className={style.formSubmitButton}
+          type="submit"
+          data-testid="button-test"
+          value="Make Your reservation"
+          aria-label="On Click"
+        />
+      </form>
+      
     </>
   );
 }

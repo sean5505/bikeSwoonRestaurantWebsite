@@ -2,24 +2,31 @@ import React, { useEffect, useState } from "react";
 import style from "./Cart.module.css";
 import { RemoveShoppingCart } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { deleteFromCart } from "../../features/cart/cartSlice";
+import {
+  deleteFromCart,
+  incrementItemQuantity,
+  decrementItemQuantity,
+} from "../../features/cart/cartSlice";
 
 export default function CartItem(props) {
-  const [count, setCount] = useState(1);
-  const [itemPrice, setItemPrice] = useState(props.item.price);
+  const [count, setCount] = useState(props.item.quantity);
+  // const [itemPrice, setItemPrice] = useState(props.item.price);
   const dispatch = useDispatch();
 
-  // for itemQuantity input
-  const handleCountChange = (e) => {
-    setCount(e.target.value);
+
+  function updateItemPrice(){
+    setCount(props.item.quantity)
+   /* const newItemPrice = Number(
+      Math.round(props.item.price * props.item.quantity * 100) / 100 || 0
+    );
+    setItemPrice(newItemPrice); <----- might re-add idk yet */ 
+    props.updateTotal()
+    
   };
 
-  //for the itemPrice considering the itemQuantity
   useEffect(() => {
-    const newItemPrice = Number(Math.round(props.item.price * count * 100) / 100 || 0)
-    setItemPrice(newItemPrice);
-    props.updateTotal(newItemPrice)
-  }, [count]);
+    updateItemPrice()
+  },[props.item])
 
   return (
     <li className={style.cartItem}>
@@ -28,15 +35,13 @@ export default function CartItem(props) {
         src={props.item.img}
         alt={props.item.name}
       />
-      <p className={style.cartItemPrice}>${itemPrice} </p>
+      <p className={style.cartItemName}>{props.item.name}</p>
+      <p className={style.cartItemPrice}>${props.item.price} </p>
+
       <div className={style.itemCount}>
-        <input
-          type="number"
-          min="1"
-          max="9"
-          value={count}
-          onChange={handleCountChange}
-        />
+        <button onClick={() => dispatch(decrementItemQuantity(props.item))}> - </button>
+        {count}
+        <button onClick={() => dispatch(incrementItemQuantity(props.item))} > +</button>
       </div>
       <div className={style.removeFromCart}>
         <RemoveShoppingCart

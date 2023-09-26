@@ -1,29 +1,13 @@
 
 .bookingForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(190, 41, 236);
+  display: grid;
+  gap: 1em;
+  place-items: center;
+  background-color: lightgrey;
+  color: black;
  
 }
 
-form {
-  padding: .7rem 0;
-
-}
-label {
-  font-weight: 900;
-  font-size: 1.5rem;
-  text-transform: capitalize;
-}
-
-input,
-select {
-  padding: 2px;
-  border: 2px solid black;
-  border-radius: 1rem;
-  text-align: center;
-}
 
 .formSubmitButton {
   border-radius: 50px;
@@ -41,7 +25,10 @@ select {
   border: 2px solid red;
   position: relative;
 }
-
+.error{
+  color: red;
+  text-align: center;
+}
 .invalid::after {
   content: "invalid";
 }

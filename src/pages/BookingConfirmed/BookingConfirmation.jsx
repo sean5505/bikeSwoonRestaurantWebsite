@@ -1,16 +1,14 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import MyContext from "../../components/context/MyContext";
-import { ThemeContext } from "../../components/context/ThemeContext";
 import Layout from "../../components/Layout";
-import ResSubmission from "../../components/ResSubmission";
-import style from "./BookingConfirmation.module.css"
+import style from "./BookingConfirmation.module.css";
+import ReservationConfirmed from "../../components/ReservationConfirmed";
+import { ReservationContext, ThemeContext } from "../../context/AppContext";
 
 export default function BookingConfirmation() {
   const { theme } = useContext(ThemeContext);
-  const { resData } = useContext(MyContext);
+  const { resData } = useContext(ReservationContext);
 
-  //console.log(`resData submiteed by reservation is ${resData.name}`)
   return (
     <>
       <Layout>
@@ -22,7 +20,7 @@ export default function BookingConfirmation() {
           }}
         >
           {resData ? (
-            <ResSubmission resData={resData} />
+            <ReservationConfirmed resData={resData} />
           ) : (
             <>
               <p>Click the button below to submit a reservation!</p>

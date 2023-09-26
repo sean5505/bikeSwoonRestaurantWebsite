@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { employeeData } from "./employeeData";
 import style from "./employees.module.css";
-import { ThemeContext } from "../../context/ThemeContext.jsx";
+import { ThemeContext } from "../../../context/AppContext";
 import Carousel from "../../Carousel.jsx";
 
 const createEmployee = (user, key) => {

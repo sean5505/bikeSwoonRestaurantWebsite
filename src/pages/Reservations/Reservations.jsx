@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useReducer, useState } from "react";
 
 import { fetchAPI, submitAPI } from "./reservationData";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
-import style from "./Reservations.module.css"
+import style from "./Reservations.module.css";
 import BookingForm from "../../components/BookingForm/BookingForm";
+import { ReservationContext } from "../../context/AppContext";
+import { toast } from "react-toastify";
 
 function updateTimes(state, action) {
   // reducer function
@@ -35,8 +37,10 @@ export default function Reservations() {
     initializeTimes
   );
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const { resData, setResData } = useContext(ReservationContext);
 
   function submitForm(formData) {
+    console.log(formData);
     submitAPI(formData);
     setIsFormSubmitted(true);
   }
@@ -48,24 +52,47 @@ export default function Reservations() {
     }
   }, [isFormSubmitted]);
 
- 
+  useEffect(() => {
+    localStorage.setItem('reservation', JSON.stringify(resData))
+  }, [resData])
 
   return (
     <>
       <Layout>
-        <div className={style.container}>
-          <header className={style.bookingInfo}>
-            <h1>BikeSwoon</h1>
-            <h5>Fill Out The Form Below And Submit Your Reservation!</h5>
-          </header>
-          <div className={style.bookingForm}>
-            <BookingForm
-              availableTimes={availableTimes}
-              dispatch={dispatch}
-              submitForm={submitForm}
-            />
-          </div>
-        </div>
+        {!resData ? (
+          <>
+            <section className={style.container}>
+              <header className={style.bookingInfo}>
+                <h1>BikeSwoon</h1>
+                <h5>Fill Out The Form And Submit Your Reservation!</h5>
+              </header>
+
+              <div className={style.bookingForm}>
+                <BookingForm
+                  availableTimes={availableTimes}
+                  dispatch={dispatch}
+                  submitForm={submitForm}
+                />
+              </div>
+            </section>
+          </>
+        ) : (
+          <section className={style.ReservationSubmitted}>
+            <h2>
+              Hello {resData.Name}! <br />
+              Your Reservation Has Already Been Submitted <br /> Click Here To
+              Submit A New Reservation
+            </h2>
+            <button
+              onClick={() => {
+                setResData(false);
+                toast("Booking Form Has Been Reset");
+              }}
+            >
+              Submit A New Reservation
+            </button>
+          </section>
+        )}
       </Layout>
     </>
   );

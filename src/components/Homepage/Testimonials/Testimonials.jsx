@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import style from "./Testimonials.module.css";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../../context/AppContext";
 import { testimonialData } from "./testimonialData";
 import { Star } from "@mui/icons-material";
 import Carousel from "../../Carousel";
@@ -15,13 +15,13 @@ const createTestimonial = (testimonial, key) => {
         alt={testimonial.name}
       />
       <h3 className={style.reviewName}>{testimonial.name}</h3>
-      <h3 className={style.rating}>
+      <span className={style.rating}>
         <Star />
         <Star />
         <Star />
         <Star />
         <Star />
-      </h3>
+      </span>
       <p className={style.description}>{testimonial.review}</p>
     </li>
   );

@@ -1,0 +1,31 @@
+.createAccount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inputFieldError {
+  border-color: red;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.passwordInput .togglePassword {
+  position: absolute;
+  right: 0;
+  top: 0.1px; /* might need to find a better way */
+}
+
+.togglePassword:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}

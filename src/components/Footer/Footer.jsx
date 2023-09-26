@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../../context/AppContext"
 import { navLinks } from "../header/Navbar/Navbar";
 
 export default function Footer() {

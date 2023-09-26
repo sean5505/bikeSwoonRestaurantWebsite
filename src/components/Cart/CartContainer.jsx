@@ -1,37 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
 import style from "./Cart.module.css";
-import { ThemeContext } from "../context/ThemeContext";
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../context/AppContext";
+import { clearCart } from "../../features/cart/cartSlice";
 
 export default function CartContainer() {
   const { theme } = useContext(ThemeContext);
   const cart = useSelector((state) => state.cart);
   const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch();
+  const [totalItems, setTotalItems] = useState(cart.length);
 
-  console.log(cart);
-
-  /* ok so this is for any additions/deletions to the cart */
-  useEffect(() => {
+  // will pass down to cartItem component for when there is an increment or decrement in an individals item price, this function will be called
+  function updateTotal() {
     let price = 0;
+    let quantity = 0;
     for (const item of cart) {
-      price += parseFloat(item.price);
+      price += parseFloat(item.price * item.quantity);
+      quantity += item.quantity;
     }
     setTotalPrice(parseFloat(price.toFixed(2)));
-  }, [cart.length]);
+    setTotalItems(quantity);
+  }
 
-  //what about changes to the quantity?
-  const updateTotal = (newItemPrice) => {
-    cart.forEach((item) => { 
-      setTotalPrice(totalPrice )
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateTotal();
+  }, [cart]);
 
-    })
-   
-   
-  };
-
-  console.log(totalPrice)
+  console.log(totalItems);
   return (
     <>
       <section
@@ -53,9 +52,9 @@ export default function CartContainer() {
           ) : (
             <>
               {cart.map((item) => (
-                <CartItem key={item.id} item={item} updateTotal = {updateTotal} />
+                <CartItem key={item.id} item={item} updateTotal={updateTotal} />
               ))}
-              <p>Total Items: {cart.length}</p>
+              <p>Total Items: {totalItems}</p>
               <p className={style.orderTotal}>
                 Order Total: ${Number(totalPrice).toFixed(2)}
               </p>
@@ -63,6 +62,10 @@ export default function CartContainer() {
                 <Link to="/menu">
                   <button>Add more items</button>
                 </Link>
+                <button onClick={() => dispatch(clearCart())}>
+                  {" "}
+                  Clear Cart
+                </button>
                 <button className={style.orderNow}>Place Your Order</button>
               </div>
             </>

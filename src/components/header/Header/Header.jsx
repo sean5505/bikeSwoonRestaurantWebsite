@@ -3,8 +3,8 @@ import Navbar from "../Navbar/Navbar";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { Menu, ShoppingCart } from "@mui/icons-material";
-import { ThemeContext } from "../../context/ThemeContext";
 import { useSelector } from "react-redux";
+import { ThemeContext } from "../../../context/AppContext";
 
 export default function Header() {
   const { theme } = useContext(ThemeContext);

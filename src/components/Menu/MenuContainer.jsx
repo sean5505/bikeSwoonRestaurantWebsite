@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../../context/AppContext";
 import MenuItem from "./MenuItem";
 import { menuItems } from "./menuItemsData";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";

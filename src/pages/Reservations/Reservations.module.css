@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  text-transform: capitalize;
   color: rgb(190, 41, 236);
   background-color: rgb(7, 12, 38);
 }
@@ -14,10 +15,25 @@
   align-items: center;
   background-color: rgb(7, 12, 38);
   flex-direction: row-reverse;
+  color: rgb(190, 41, 236);
 }
 
 .bookingForm {
   width: 55%;
+}
+
+.ReservationSubmitted{
+  background-color: rgb(7, 12, 38);
+  color: rgb(190, 41, 236);
+  text-align: center;
+}
+
+.ReservationSubmitted > h2{
+  margin: 0;
+}
+
+.ReservationSubmitted > button{
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {

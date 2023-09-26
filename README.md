@@ -18,7 +18,7 @@
 
 ## Overview
 
-A user-friendly, interactive web application that serves as a front-end interface for BikeSwoon, enabling customers to effortlessly view a psuedo brocheure. It provides users the ability to conveniently add their desired items to a virtual cart, allowing a seamless ordering experience. Additionally, the application offers the convenience of advance reservation submission, allowing customers to secure their dining plans ahead of time with ease.
+A user-friendly, interactive web application that serves as a front-end interface for BikeSwoon, enabling customers to effortlessly view a psuedo brocheure. It provides users the ability to conveniently add their desired items to a virtual cart, allowing a seamless ordering experience. Additionally, the application offers the convenience of advance reservation submission, allowing customers to secure their dining plans ahead of time with ease. If the user chooses to Login, this form is prefilled with some of their data. 
 
 ![Website Image](public/assets/bikeSwoonIntro.png) 
 
@@ -26,16 +26,19 @@ A user-friendly, interactive web application that serves as a front-end interfac
 - Vite
 - React
 - Javascript
-- Css Modules
+- CSS Modules
 - Redux
+- Firebase
 
 ## Development
 
-Originally, this project was undertaken as a capstone project within the context of a course in which I was enrolled. The project specifications entailed the creation of a homepage featuring navigation links, as well as a reservation page designed to enable users to input personal information through a form. Upon submission, users would be directed to a booking confirmation page. I created an interactive [Prototype](public/assets/bikeSwoonInitialDesign.pdf) in Figma to serve as a visual representation of the project requirements. Following the completion of the initial assignment, I aspired to elevate the project to the status of a comprehensive capstone endeavor, wherein I could fully employ and demonstrate the proficiency acquired throughout my learning experience.
+Originally, this project was undertaken as a capstone project within the context of a course in which I was enrolled. The project specifications entailed the creation of a homepage featuring navigation links, as well as a reservation page designed to enable users to input personal information through a form. Upon submission, users would be directed to a booking confirmation page. I created an interactive prototype in Figma to serve as a visual representation of the project requirements.
+![bikeSwoonDesign](https://github.com/sean5505/testtt/assets/110543268/2a7067ed-dc92-46bb-b940-9844cd34e9c6)
+Following the completion of the initial assignment, I aspired to elevate the project to the status of a comprehensive capstone endeavor, wherein I could fully employ and demonstrate the proficiency acquired throughout my learning experience.
 
 #### **Tech stack**
 
-According to the initial assignment specifications, I implemented the application using `React`. To optimize the development process and achieve faster startup times, I opted for `Vite` as the build tool, leveraging its efficient development server capabilities. For effective state management in the shopping cart functionality, I utilized `Redux`, ensuring seamless viability. To enhance code maintainability during iterative development and minimize class name conflicts, I employed `Module-Based CSS Files`.
+According to the initial assignment specifications, I implemented the application using `React`. To optimize the development process and achieve faster startup times, I opted for `Vite` as the build tool, leveraging its efficient development server capabilities. For effective state management in the shopping cart functionality, I utilized `Redux`, ensuring seamless viability across the application. The cart's state is preserved across application reloads by utilizing local storage. To enhance code maintainability during iterative development and minimize class name conflicts, I employed `Module-Based CSS Files`. For login authentication, I opted to utilize `Firebase`, taking advantage of serveral features such as createEmailAndPassword and googleSignIn for managing users. In addition, I took advantage of serveral popular libraries such as `React-Hook-Form` improve code quality.  
 
 ## Challenges
 
@@ -53,12 +56,10 @@ In conclusion, this project served as a valuable platform for me to apply and va
 
 ---
 ## Future Plans
+- **Convert from JSX to TSX**, optional: CSS to SCSS
 - UI/UX/Responsive improvements
-- Code Optimization
-- Cart Functionality: fix order total display upon item quantity changes
+- Code Optimization / Scalability
 - Implement at least 1 Unit Test for primary components
 - Replace dependicies such as React-Slider with original code
-- Login Authetntication?
-- Implement RTK Query for caching state?
-- Psuedo Payment Page? --stripe
+- New Features - Psuedo Payment Page? --stripe, Profile Page for active User, etc. 
 

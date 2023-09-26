@@ -1,0 +1,53 @@
+
+.container {
+  width: 50dvw;
+  height: 50dvh;
+  background-color: lightgrey;
+}
+
+.inputFieldError {
+  border-color: red;
+}
+
+.SignInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vw;
+  background-color: lightgrey;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.passwordInput .togglePassword {
+  position: absolute;
+  right: 0;
+  top: 0.1px; /* might need to find a better way */
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.googleSignInButton{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: black;
+  color: purple;
+}
+.togglePassword:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}
