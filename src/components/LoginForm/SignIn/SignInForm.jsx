@@ -39,7 +39,6 @@ export default function SignInForm() {
   const onSubmit = (data) => {
     signInWithEmailAndPassword(auth, data.Email, data.Password)
       .then((userCredential) => {
-        console.log(userCredential);
         setIsUserLoggedIn(true);
         navigate("/");
       })

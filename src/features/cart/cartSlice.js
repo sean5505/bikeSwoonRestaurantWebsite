@@ -11,7 +11,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     incrementItemQuantity: (state, action) => {
-      console.log(...state)
       return state.map((item) => {
         if (item.id === action.payload.id) {
           if (item.quantity < 3)
@@ -34,7 +33,6 @@ export const cartSlice = createSlice({
     },
 
     addToCart: (state, action) => {
-      console.log(action);
       const itemIndex = state.findIndex(
         (item) => item.id === action.payload.id
       );

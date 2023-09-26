@@ -13,8 +13,7 @@ export default function GoogleSignIn() {
 
     const googleSignIn = () => {
         signInWithPopup(auth, provider)
-          .then((result) => {
-            console.log(result);
+          .then(() => {
             setIsUserLoggedIn(true);
           })
           .catch((error) => {

@@ -13,7 +13,6 @@ export default function Home() {
   const { resData } = useContext(ReservationContext);
   const { isUserLoggedIn } = useContext(UserAuth);
   const auth = getAuth();
-  console.log(auth);
 
   return (
     <>

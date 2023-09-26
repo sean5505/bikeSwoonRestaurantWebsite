@@ -30,7 +30,7 @@ export default function CartContainer() {
     updateTotal();
   }, [cart]);
 
-  console.log(totalItems);
+ 
   return (
     <>
       <section

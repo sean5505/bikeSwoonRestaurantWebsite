@@ -35,7 +35,6 @@ export default function BookingForm(props) {
   }
 
   function onSubmit(data) {
-    console.log(data);
     props.submitForm(data);
     setResData(data);
     closeModal();
@@ -93,7 +92,6 @@ export default function BookingForm(props) {
               required: { value: true, message: "Required" },
               onChange: (e) => {
                 handleDateChange(e);
-                console.log("changed occured");
               },
             })}
             type="date"

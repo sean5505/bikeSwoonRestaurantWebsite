@@ -40,7 +40,6 @@ export default function Reservations() {
   const { resData, setResData } = useContext(ReservationContext);
 
   function submitForm(formData) {
-    console.log(formData);
     submitAPI(formData);
     setIsFormSubmitted(true);
   }
