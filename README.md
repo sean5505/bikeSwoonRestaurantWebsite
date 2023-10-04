@@ -25,7 +25,7 @@ A user-friendly, interactive web application that serves as a front-end interfac
 ### Technologies
 - Vite
 - React
-- Javascript
+- ~~Javascript~~ TypeScript
 - CSS Modules
 - Redux
 - Firebase
@@ -38,7 +38,19 @@ Following the completion of the initial assignment, I aspired to elevate the pro
 
 #### **Tech stack**
 
-According to the initial assignment specifications, I implemented the application using `React`. To optimize the development process and achieve faster startup times, I opted for `Vite` as the build tool, leveraging its efficient development server capabilities. For effective state management in the shopping cart functionality, I utilized `Redux`, ensuring seamless viability across the application. The cart's state is preserved across application reloads by utilizing local storage. To enhance code maintainability during iterative development and minimize class name conflicts, I employed `Module-Based CSS Files`. For login authentication, I opted to utilize `Firebase`, taking advantage of serveral features such as createEmailAndPassword and googleSignIn for managing users. In addition, I took advantage of serveral popular libraries such as `React-Hook-Form` improve code quality.  
+According to the initial assignment specifications, I implemented the application using `React`. 
+
+Initially, I developed the application using JavaScript. However, I decided to leverage `TypeScript` for its capabilities of compile-time code checking. This allowed me to identify errors in my code in the development process, leading to safer and more efficient code refactoring and ultimately improving project maintainability.
+
+To optimize the development process and achieve faster startup times, I opted for `Vite` as the build tool, leveraging its efficient development server capabilities. 
+
+For effective state management in the shopping cart functionality, I utilized `Redux`, ensuring seamless viability across the application. The cart's state is preserved across application reloads by utilizing local storage. 
+
+To enhance code maintainability during iterative development and minimize class name conflicts, I employed `Module-Based CSS Files`. 
+
+For login authentication, I opted to utilize `Firebase`, taking advantage of serveral features such as createEmailAndPassword and googleSignIn for managing users. 
+
+In addition, I took advantage of serveral popular libraries such as `React-Hook-Form` improve code quality.  
 
 ## Challenges
 
