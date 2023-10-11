@@ -19,6 +19,7 @@ export const menuItems = [
     name: "Tam Worth Chop",
     price: "52.50",
     type: "Specials",
+    desc: "Our Tamworth chop is a juicy and flavorful cut of pork with a perfect balance of tenderness and texture.",
   },
   {
     id: 4,
@@ -40,6 +41,7 @@ export const menuItems = [
     name: "Slow Roasted Lamb",
     price: "70",
     type: "Specials",
+    desc: "Our slow roasted lamb is tender, succulent, and bursting with savory flavor that melts in your mouth.",
   },
   {
     id: 7,
@@ -61,6 +63,7 @@ export const menuItems = [
     name: "Roasted Duck",
     price: "42",
     type: "Specials",
+    desc: "Our roasted duck is a crispy and succulent delight, bursting with rich, savory flavor that will tantalize your taste buds.",
   },
   {
     id: 10,
@@ -82,6 +85,7 @@ export const menuItems = [
     name: "Kobe Rib",
     price: "45",
     type: "Specials",
+    desc: "Our Kobe rib is a tender and flavorful cut of beef with intricate marbling, delivering a melt-in-your-mouth experience that is sure to satisfy even the most discerning palates.",
   },
   {
     id: 13,
@@ -89,6 +93,7 @@ export const menuItems = [
     name: "Baked Stuffed Lobster",
     price: "70",
     type: "Specials",
+    desc: "Our baked lobster is a mouth-watering dish that combines succulent and sweet meat with a golden, buttery topping, creating a delightful texture and flavor that will leave you wanting more.",
   },
   {
     id: 14,
@@ -96,5 +101,6 @@ export const menuItems = [
     name: "Crab Cakes",
     price: "30",
     type: "Specials",
+    desc: "Our crab cakes are a delectable combination of fresh, juicy crab meat, savory seasonings, and a golden crispy coating, offering a taste of the ocean in every bite.",
   },
 ];

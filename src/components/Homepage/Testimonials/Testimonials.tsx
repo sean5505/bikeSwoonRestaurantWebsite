@@ -3,13 +3,13 @@ import style from "./Testimonials.module.css";
 import { ThemeContext } from "../../../context/AppContext";
 import { testimonialData } from "./testimonialData";
 import { Star } from "@mui/icons-material";
-import Carousel from "../../Carousel";
+import Carousel from "../../utils/Carousel/Carousel";
 import { Testimonial } from "../../../types/types";
 
 
 const createTestimonial = (testimonial: Testimonial, key: number) => {
   return (
-    <li className={style.review} key={key}>
+    <div className={style.review} key={key}>
       <img
         className={style.reviewImg}
         src={testimonial.img}
@@ -24,7 +24,7 @@ const createTestimonial = (testimonial: Testimonial, key: number) => {
         <Star />
       </span>
       <p className={style.description}>{testimonial.review}</p>
-    </li>
+    </div>
   );
 };
 
@@ -40,7 +40,7 @@ export default function Testimonials() {
       }}
     >
       <h1 className={style.header}>Testimonials</h1>
-      <Carousel>
+      <Carousel count = {testimonialData.length}>
         {testimonialData.map((testimonial) =>
           createTestimonial(testimonial, testimonial.id)
         )}

@@ -1,18 +1,22 @@
-import{ useContext } from "react";
+import { useContext } from "react";
 import style from "./Highlights.module.css";
-import { highlightData } from "./highlightData";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../../context/AppContext";
-import Carousel from "../../Carousel";
+import Carousel from "../../utils/Carousel/Carousel";
 import { useAppDispatch } from "../../../app/hooks";
 import { addToCart } from "../../../features/cart/cartSlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { Highlight } from "../../../types/types";
+import { MenuItems } from "../../../types/types";
+import { menuItems } from "../../Menu/menuItemsData";
 
-const createHighlight = (highlight: Highlight, key: number, dispatch : Dispatch) => {
+const createHighlight = (
+  highlight: MenuItems,
+  key: number,
+  dispatch: Dispatch
+) => {
   return (
-    <li key={key} className={style.item}>
-      <img src={highlight.img} alt="" height={"200px"} />
+    <div key={key} className={style.item}>
+      <img src={highlight.img} alt={highlight.name} height={"200px"} />
       <div className={style.itemHead}>
         <h4>{highlight.name}</h4>
         <h4 className={style.price}> ${highlight.price}</h4>
@@ -22,13 +26,16 @@ const createHighlight = (highlight: Highlight, key: number, dispatch : Dispatch)
       <button onClick={() => dispatch(addToCart(highlight))}>
         Add To Cart
       </button>
-    </li>
+    </div>
   );
 };
 
 export default function Highlights() {
-  const { theme } = useContext(ThemeContext) || {};
+  const { theme } = useContext(ThemeContext);
   const dispatch = useAppDispatch();
+  const specials = menuItems.filter((item: MenuItems) =>
+    item.type.toLowerCase().includes("specials")
+  );
 
   return (
     <>
@@ -49,8 +56,8 @@ export default function Highlights() {
           </Link>
         </header>
         <main>
-          <Carousel>
-            {highlightData.map((highlight) =>
+          <Carousel count={specials.length}>
+            {specials.map((highlight) =>
               createHighlight(highlight, highlight.id, dispatch)
             )}
           </Carousel>

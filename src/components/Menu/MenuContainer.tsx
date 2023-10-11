@@ -70,6 +70,8 @@ export default function MenuContainer() {
     setActiveButton(type);
   };
 
+  const sortOptions = ["Main", "Appetizers", "Specials"];
+
   return (
     <>
       <section
@@ -86,6 +88,7 @@ export default function MenuContainer() {
           Main Menu
         </h2>
         <div className={style.sortContainer}>
+          
           <button
             className={style.sortButton}
             onClick={showAll}
@@ -93,31 +96,15 @@ export default function MenuContainer() {
           >
             All
           </button>
-          <button
-            className={style.sortButton}
-            onClick={() => filterByType("Main")}
-            style={{ backgroundColor: activeButton === "Main" ? "red" : "" }}
-          >
-            Main
-          </button>
-          <button
-            className={style.sortButton}
-            onClick={() => filterByType("Appetizers")}
-            style={{
-              backgroundColor: activeButton === "Appetizers" ? "red" : "",
-            }}
-          >
-            Appetizers
-          </button>
-          <button
-            className={style.sortButton}
-            onClick={() => filterByType("Specials")}
-            style={{
-              backgroundColor: activeButton === "Specials" ? "red" : "",
-            }}
-          >
-            Specials
-          </button>
+          {sortOptions.map((option, index) => ( //index is fine
+            <button
+              key={index}
+              onClick={() => filterByType(option)}
+              style={{ backgroundColor: activeButton === option ? "red" : "" }}
+            >
+              {option}
+            </button>
+          ))}
           <button className={style.sortButton} onClick={handleSortClick}>
             {sortOrder ? (
               <>

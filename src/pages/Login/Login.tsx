@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { ThemeContext, UserAuth } from "../../context/AppContext";
 import SignIn from "../../components/LoginForm/SignIn/SignInForm";
 import CreateAccount from "../../components/LoginForm/CreateAccount/CreateAccount";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/utils/Modal/Modal";
 import AuthDetails from "../../components/AuthDetails";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";

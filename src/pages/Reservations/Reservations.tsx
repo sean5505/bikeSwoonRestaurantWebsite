@@ -10,7 +10,10 @@ import { ReservationContext } from "../../context/AppContext";
 import { toast } from "react-toastify";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-function updateTimes(state: string[] | undefined, action: PayloadAction<string[]>) {
+function updateTimes(
+  state: string[] | undefined,
+  action: PayloadAction<string[]>
+) {
   // reducer function
   switch (action.type) {
     case "UPDATE_TIMES":
@@ -22,8 +25,7 @@ function updateTimes(state: string[] | undefined, action: PayloadAction<string[]
   }
 }
 
-export function initializeTimes(a: any) {
-  //export to use in app test// initialState
+function initializeTimes(a: any) {
   const currentDate = new Date(a);
   if (a) {
     const initialTimesforSelectedDate = fetchAPI(currentDate);
@@ -40,7 +42,7 @@ export default function Reservations() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const { resData, setResData } = useContext(ReservationContext);
 
-  function submitForm(formData : string[]) {
+  function submitForm(formData: string[]) {
     submitAPI(formData);
     setIsFormSubmitted(true);
   }
@@ -53,8 +55,8 @@ export default function Reservations() {
   }, [isFormSubmitted]);
 
   useEffect(() => {
-    localStorage.setItem('reservation', JSON.stringify(resData))
-  }, [resData])
+    localStorage.setItem("reservation", JSON.stringify(resData));
+  }, [resData]);
 
   return (
     <>

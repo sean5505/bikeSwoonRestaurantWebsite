@@ -2,13 +2,13 @@ import  { useContext } from "react";
 import { employeeData } from "./employeeData";
 import style from "./employees.module.css";
 import { ThemeContext } from "../../../context/AppContext";
-import Carousel from "../../Carousel";
+import Carousel from "../../utils/Carousel/Carousel";
 import { Employee } from "../../../types/types";
 
 const createEmployee = (employee : Employee, key: number) => {
   const { theme } = useContext(ThemeContext);
   return (
-    <li
+    <div
       key={key}
       className={style.employee}
       style={{
@@ -19,12 +19,13 @@ const createEmployee = (employee : Employee, key: number) => {
       <img className={style.employeeImg} src={employee.img} alt={employee.name} />
       <h2 className={style.employeeName}>{employee.name}</h2>
       <p className={style.employeeDesc}>{employee.type}</p>
-    </li>
+    </div>
   );
 };
 
 export default function Employees() {
   const { theme } = useContext(ThemeContext);
+  const employeeCount = employeeData.length
   return (
     <section
       className={style.employees}
@@ -38,7 +39,7 @@ export default function Employees() {
         </h4>
       </header>
       <main>
-        <Carousel>
+        <Carousel count = {employeeCount}>
           {employeeData.map((employee) => createEmployee(employee, employee.id))}
         </Carousel>
       </main>

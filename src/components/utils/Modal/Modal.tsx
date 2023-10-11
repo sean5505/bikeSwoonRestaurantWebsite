@@ -1,5 +1,5 @@
 import  { useContext } from 'react'
-import { ModalContext } from '../../context/AppContext'
+import { ModalContext } from '../../../context/AppContext'
 import style from "./Modal.module.css"
 
 export default function Modal({children} : {children: React.ReactNode}) {

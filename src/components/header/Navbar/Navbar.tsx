@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Close } from "@mui/icons-material";
 import { ModalContext } from "../../../context/AppContext";
 import { getAuth } from "firebase/auth";
-import Modal from "../../Modal/Modal";
+import Modal from "../../utils/Modal/Modal";
 import AuthDetails from "../../AuthDetails";
 
 export const navLinks = [

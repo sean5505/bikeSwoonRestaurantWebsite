@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { Highlight, MenuItems } from "../../types/types";
+import { MenuItems } from "../../types/types";
 
 const initialState = () => {
   const cartData = localStorage.getItem("cart");
@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
       });
     },
 
-    addToCart: (state, action: PayloadAction<MenuItems | Highlight>) => {
+    addToCart: (state, action: PayloadAction<MenuItems>) => {
       // | Highlight to highlight the ability of the user to append to the cart from the highlights component
       const itemIndex = state.findIndex(
         (item: MenuItems) => item.id === action.payload.id
