@@ -4,19 +4,16 @@ import Highlights from "./Highlights";
 import { menuItems } from "../../Menu/menuItemsData";
 import { Provider } from "react-redux";
 import store from "../../../app/store";
-import AppProviders from "../../../context/AppProviders";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Highlights", () => {
   beforeEach(async () => {
     render(
-      <AppProviders>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Highlights />
-          </BrowserRouter>
-        </Provider>
-      </AppProviders>
+      <Provider store={store}>
+        <MemoryRouter>
+          <Highlights />
+        </MemoryRouter>
+      </Provider>
     );
   }); // interesting, in this one i get an error related to called this.mql.addListener because of the carousel, gonna have to remove the dependencie as originally planned
   it("Highlights should feature the specials of the menuItems", () => {
