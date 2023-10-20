@@ -1,0 +1,25 @@
+.orderSummaryContainer {
+  background-color: lightgray;
+  padding: 1rem ;
+  border-radius: 50px;
+}
+.orderSummary {
+  border: 2px solid black;
+}
+
+.orderSummary td {
+  padding: 0 1rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.orderTotal {
+  color: lime;
+}
+
+.orderButtons {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  align-items: center;
+}

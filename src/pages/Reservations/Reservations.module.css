@@ -25,6 +25,11 @@
 .ReservationSubmitted{
   background-color: rgb(7, 12, 38);
   color: rgb(190, 41, 236);
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 

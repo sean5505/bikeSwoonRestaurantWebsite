@@ -1,0 +1,11 @@
+.couponContainer{
+    background-color: lightgray;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+.couponInput{
+    
+    width: 60%;
+    margin-right: .7rem;
+}

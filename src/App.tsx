@@ -6,7 +6,7 @@ import Menu from "./pages/Menu";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import About from "./pages/About";
-import Order from "./pages/Cart";
+import Cart from "./pages/Cart/Cart";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useContext, useEffect} from "react";
@@ -57,7 +57,7 @@ export default function App() {
           <Route path="/bookingConfirmed" element={<BookingConfirmation />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
-          <Route path="order" element={<Order />} />
+          <Route path="order" element={<Cart />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Router>

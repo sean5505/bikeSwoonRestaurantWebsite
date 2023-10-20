@@ -35,7 +35,7 @@ export default function Carousel(props: Props) {
         <div className={style.contentWrapper}>
           <div
             className={style.content}
-            style={{ transform: `translateX(-${currentIndex * 100.3}%)` }}
+            style={{ transform: `translateX(-${currentIndex * 100.6}%)` }}
           >
             {props.children}
           </div>

@@ -1,0 +1,29 @@
+
+
+.cartItem td {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.cartItem td:first-child {
+  border-left: none;
+}
+.cartItem .cartItemImg {
+  width: 100%;
+  height: 7rem;
+}
+
+.price {
+  color: green;
+}
+
+.removeFromCart:hover {
+  cursor: pointer;
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .cartItem .cartItemImg {
+    height: 5rem;
+  }
+}

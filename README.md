@@ -34,7 +34,7 @@ A user-friendly, interactive web application that serves as a front-end interfac
 ## Development
 
 Originally, this project was undertaken as a capstone project within the context of a course in which I was enrolled. The project specifications entailed the creation of a homepage featuring navigation links, as well as a reservation page designed to enable users to input personal information through a form. Upon submission, users would be directed to a booking confirmation page. I created an interactive prototype in Figma to serve as a visual representation of the project requirements.
-![bikeSwoonDesign](https://github.com/sean5505/testtt/assets/110543268/2a7067ed-dc92-46bb-b940-9844cd34e9c6)
+![bikeSwoonDesign](https://github.com/sean5505/testtt/assets/110543268/d53c8531-f2fa-4136-99ab-6923269e30d7)
 Following the completion of the initial assignment, I aspired to elevate the project to the status of a comprehensive capstone endeavor, wherein I could fully employ and demonstrate the proficiency acquired throughout my learning experience.
 
 #### **Tech stack**
@@ -80,6 +80,7 @@ In conclusion, this project served as a valuable platform for me to apply and va
 
 ---
 ## Future Plans
+- Bug Fixes
 - UI/UX/Responsive improvements
 - Improve test sophistication/ test coverage
 - Code Optimization / Scalability

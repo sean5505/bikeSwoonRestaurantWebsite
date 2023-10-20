@@ -1,21 +1,15 @@
-.about{
-    display: flex;
-    flex-direction: column ;
-    justify-content: center;
-    align-items: center;
-   
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .about .item1 {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.someInfo{
+  width: 100%;
   text-align: center;
 }
 
-
+.someInfo {
+  text-align: center;
+}
