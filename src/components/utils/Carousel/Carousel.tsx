@@ -1,51 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import style from "./Carousel.module.css";
 
+const settings = {
+  infinite: true,
+  arrows: true,
+  cssEase: "linear",
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
 type Props = {
-  count: number;
   children: React.ReactNode;
 };
 
 export default function Carousel(props: Props) {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [length, setLength] = useState<number>(props.count);
-
-  function nextItem() {
-    if (currentIndex < length - 1) {
-      setCurrentIndex((prevState) => prevState + 1);
-      setLength(props.count);
-    }
-  }
-
-  function previousItem() {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
-      setLength(props.count);
-    }
-  }
-
   return (
     <div className={style.container}>
-      <div className={style.wrapper}>
-        {currentIndex > 0 && (
-          <button className={style.leftArrow} onClick={() => previousItem()}>
-            &lt;
-          </button>
-        )}
-        <div className={style.contentWrapper}>
-          <div
-            className={style.content}
-            style={{ transform: `translateX(-${currentIndex * 100.6}%)` }}
-          >
-            {props.children}
-          </div>
-        </div>
-        {currentIndex < length - 1 && (
-          <button className={style.rightArrow} onClick={() => nextItem()}>
-            &gt;
-          </button>
-        )}
-      </div>
+      <Slider {...settings}>{props.children}</Slider>
     </div>
   );
 }

@@ -26,15 +26,9 @@
   bottom: 30%;
 }
 
-
-
 .item {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
   border: solid 2px black;
   text-align: center;
-  flex-grow: 1;
 }
 .item img {
   width: 100%;
@@ -57,7 +51,6 @@
 }
 
 @media (max-width: 768px) {
-  
   .item {
     width: 100%;
     text-align: center;
@@ -69,8 +62,7 @@
 }
 
 @media (max-width: 400px) {
-    .items {
-      width: 60%;
-    }
+  .items {
+    width: 60%;
   }
-
+}

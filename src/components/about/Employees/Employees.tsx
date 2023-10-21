@@ -25,7 +25,7 @@ const createEmployee = (employee : Employee, key: number) => {
 
 export default function Employees() {
   const { theme } = useContext(ThemeContext);
-  const employeeCount = employeeData.length
+
   return (
     <section
       className={style.employees}
@@ -39,7 +39,7 @@ export default function Employees() {
         </h4>
       </header>
       <main>
-        <Carousel count = {employeeCount}>
+        <Carousel>
           {employeeData.map((employee) => createEmployee(employee, employee.id))}
         </Carousel>
       </main>

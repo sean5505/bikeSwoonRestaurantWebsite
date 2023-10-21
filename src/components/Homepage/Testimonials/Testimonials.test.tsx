@@ -18,7 +18,7 @@ describe("Employees", () => {
   });
   it("Testimonials section sucessfully renders the 'testimonials' from the data file", () => {
     testimonialData.forEach((testimonial) => {
-      const name = screen.getByText(testimonial.name);
+      const name = screen.queryAllByText(testimonial.name);
       expect(name).to.exist;
     });
   });

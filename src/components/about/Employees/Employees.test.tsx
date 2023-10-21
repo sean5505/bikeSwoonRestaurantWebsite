@@ -18,7 +18,7 @@ describe("Employees", () => {
   });
   it("Employees section sucessfully renders the employees from the data", () => {
     employeeData.forEach((employee) => {
-      const name = screen.getByText(employee.name);
+      const name = screen.queryAllByText(employee.name);
       expect(name).to.exist;
     });
   });

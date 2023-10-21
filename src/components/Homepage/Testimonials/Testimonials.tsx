@@ -40,7 +40,7 @@ export default function Testimonials() {
       }}
     >
       <h1 className={style.header}>Testimonials</h1>
-      <Carousel count = {testimonialData.length}>
+      <Carousel>
         {testimonialData.map((testimonial) =>
           createTestimonial(testimonial, testimonial.id)
         )}

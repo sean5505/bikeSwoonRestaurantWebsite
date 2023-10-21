@@ -80,10 +80,8 @@ In conclusion, this project served as a valuable platform for me to apply and va
 
 ---
 ## Future Plans
-- Bug Fixes
 - UI/UX/Responsive improvements
 - Improve test sophistication/ test coverage
 - Code Optimization / Scalability
-- **Update carousel component/ multiple slides?**
 - New Features - Psuedo Payment Page? --stripe, Profile Page for active User, etc. 
 

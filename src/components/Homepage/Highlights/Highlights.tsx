@@ -15,7 +15,7 @@ const createHighlight = (
   dispatch: Dispatch
 ) => {
   return (
-    <div key={key} className={style.item}>
+    <li key={key} className={style.item}>
       <img src={highlight.img} alt={highlight.name} height={"200px"} />
       <div className={style.itemHead}>
         <h4>{highlight.name}</h4>
@@ -26,7 +26,7 @@ const createHighlight = (
       <button onClick={() => dispatch(addToCart(highlight))}>
         Add To Cart
       </button>
-    </div>
+    </li>
   );
 };
 
@@ -56,7 +56,7 @@ export default function Highlights() {
           </Link>
         </header>
         <main>
-          <Carousel count={specials.length}>
+          <Carousel>
             {specials.map((highlight) =>
               createHighlight(highlight, highlight.id, dispatch)
             )}

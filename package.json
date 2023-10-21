@@ -14,7 +14,9 @@
         "react-intersection-observer": "^9.4.3",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.8.1",
+        "react-slick": "^0.29.0",
         "react-toastify": "^9.1.2",
+        "slick-carousel": "^1.8.1",
         "typewriter-effect": "^2.20.1"
     },
     "scripts": {
@@ -47,6 +49,7 @@
         "@testing-library/react": "^14.0.0",
         "@types/react": "^18.2.23",
         "@types/react-dom": "^18.2.8",
+        "@types/react-slick": "^0.23.11",
         "@vitejs/plugin-react": "^4.0.0",
         "@vitest/coverage-c8": "^0.30.1",
         "dotenv": "^16.3.1",
