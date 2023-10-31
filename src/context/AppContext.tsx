@@ -1,16 +1,21 @@
-import React, { useState, createContext, SetStateAction, ReactNode, Dispatch } from "react";
+import React, {
+  useState,
+  createContext,
+  SetStateAction,
+  ReactNode,
+  Dispatch,
+} from "react";
 
-
-type ReservationContextType = { //replace "any"
-  resData: any; 
-  setResData: React.Dispatch<SetStateAction<any>>; 
+type ReservationContextType = {
+  //replace "any"
+  resData: any;
+  setResData: React.Dispatch<SetStateAction<any>>;
 };
 
 const ReservationContext = createContext<ReservationContextType>({
   resData: false,
-  setResData: () => {}
-}
-);
+  setResData: () => {},
+});
 
 function ReservationContextProvider({ children }: { children: ReactNode }) {
   const value = () => {
@@ -42,10 +47,9 @@ const ThemeContext = createContext<ThemeContextType>({
     primaryColor: "#070c26",
     secondaryColor: "#be29ec",
     tertiaryColor: "teal",
-  } ,
-  setTheme: () => {}
-}
-);
+  },
+  setTheme: () => {},
+});
 
 function ThemeContextProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>({
@@ -67,7 +71,7 @@ type UserAuthProps = {
 };
 const UserAuth = createContext<UserAuthProps>({
   isUserLoggedIn: false,
-  setIsUserLoggedIn: () => {}
+  setIsUserLoggedIn: () => {},
 });
 
 function UserAuthProvider({ children }: { children: ReactNode }) {
@@ -80,40 +84,6 @@ function UserAuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-type ModalContext = {
-  isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<SetStateAction<boolean>>;
-  openModal: () => void;
-  closeModal: () => void;
-};
-
-const ModalContext = createContext<ModalContext>({
-  isModalOpen: false,
-  setIsModalOpen: () => {},
-  closeModal : () => {},
-  openModal: () => {},
-});
-
-function ModalContextProvider({ children }: { children: ReactNode }) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <ModalContext.Provider
-      value={{ isModalOpen, setIsModalOpen, openModal, closeModal }}
-    >
-      {children}
-    </ModalContext.Provider>
-  );
-}
-
 export {
   ReservationContext,
   ReservationContextProvider,
@@ -121,6 +91,4 @@ export {
   ThemeContextProvider,
   UserAuth,
   UserAuthProvider,
-  ModalContext,
-  ModalContextProvider,
 };

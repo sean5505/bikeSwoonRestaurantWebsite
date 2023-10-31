@@ -1,0 +1,9 @@
+.employees {
+  text-align: center;
+}
+
+.employeesHead h1 {
+  margin: 0;
+  padding-top: 1.2rem;
+  text-decoration: underline;
+}

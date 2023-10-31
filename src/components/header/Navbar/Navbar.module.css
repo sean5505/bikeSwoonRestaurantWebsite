@@ -37,7 +37,9 @@
   font-size: 1.8rem;
 }
 
+
 @media (max-width: 1024px) {
+  
   .navBtn {
     visibility: visible;
     opacity: 1;

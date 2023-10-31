@@ -34,7 +34,7 @@ export default function Header() {
       <div className={style.headerNavBar}>
         <Navbar navRef={navRef} showNavBar={showNavBar} />
         <div className={style.cart}>
-          <Link to="/order">
+          <Link to="/cart">
             <button className={style.navBtn}>
               <ShoppingCart />
             </button>

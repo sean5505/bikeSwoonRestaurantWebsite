@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 
 import { fetchAPI, submitAPI } from "./reservationData.js";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 import style from "./Reservations.module.css";
-import BookingForm from "../../components/BookingForm/BookingForm";
+import BookingForm from "../../components/Forms/BookingForm/BookingForm.js";
 import { ReservationContext } from "../../context/AppContext";
 import { toast } from "react-toastify";
 import { PayloadAction } from "@reduxjs/toolkit";
@@ -39,20 +39,14 @@ export default function Reservations() {
     null,
     initializeTimes
   );
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
   const { resData, setResData } = useContext(ReservationContext);
 
   function submitForm(formData: string[]) {
     submitAPI(formData);
-    setIsFormSubmitted(true);
+    navigate("/bookingConfirmed");
   }
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isFormSubmitted) {
-      navigate("/bookingConfirmed");
-    }
-  }, [isFormSubmitted]);
 
   useEffect(() => {
     localStorage.setItem("reservation", JSON.stringify(resData));
@@ -88,7 +82,7 @@ export default function Reservations() {
             <button
               onClick={() => {
                 setResData(false);
-                toast("Booking Form Has Been Reset");
+                toast.success("Booking Form Has Been Reset");
               }}
             >
               Submit A New Reservation

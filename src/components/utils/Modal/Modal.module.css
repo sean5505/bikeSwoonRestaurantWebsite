@@ -1,32 +1,43 @@
 .modalOverlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Use rgba to control opacity */
-    position: fixed; /* Change to fixed for covering the entire viewport */
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Ensure it's above the modal */
+  background-color: rgba(0, 0, 0, 0.5); /* Use rgba to control opacity */
+  position: fixed; /* Change to fixed for covering the entire viewport */
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it's above the modal */
 }
 
 .modal {
-    opacity: 1;
-    background-color: aqua;   
-    position: relative;
-    z-index: 1000; /* Make sure it's above the overlay */
-    padding: 2rem;
-    border-radius: 1rem;
-  
-   
+  opacity: 1;
+  background-color: lightgrey;
+  z-index: 1000; /* Make sure it's above the overlay */
+  position: relative;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.modalHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.closeButton {
+  height: fit-content;
+  cursor: pointer;
 }
 
 .modalContent {
-    padding: 2rem; /* Add padding to the modal content as needed */
-    text-align: center;
+  padding: 1rem; /* Add padding to the modal content as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.closeButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
+.modalActions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }

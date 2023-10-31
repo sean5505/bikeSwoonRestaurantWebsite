@@ -1,22 +1,41 @@
-import  { useContext } from 'react'
-import { ModalContext } from '../../../context/AppContext'
-import style from "./Modal.module.css"
+import style from "./Modal.module.css";
 
-export default function Modal({children} : {children: React.ReactNode}) {
-    const {isModalOpen, closeModal} = useContext(ModalContext)
+type Props = {
+  children: React.ReactNode;
+  title: string;
+  isModalOpen: boolean;
+  closeModal: () => void;
+  performFunction?: () => void;
+};
 
+export default function Modal({
+  children,
+  title,
+  isModalOpen,
+  closeModal,
+  performFunction,
+}: Props) {
   return (
     <>
-    {isModalOpen && (
+      {isModalOpen && (
         <div className={style.modalOverlay}>
-          <div className={style.modal} >
-            <button className={style.closeButton} onClick={closeModal}>
-              &times;
-            </button>
+          <div className={style.modal}>
+            <header className={style.modalHead}>
+              <h1>{title}</h1>
+              <button className={style.closeButton} onClick={closeModal}>
+                &times;
+              </button>
+            </header>
             <div className={style.modalContent}>{children}</div>
+            {performFunction && (
+              <div className={style.modalActions}>
+                <button onClick={closeModal}>Cancel</button>
+                <button onClick={performFunction}>Continue</button>
+              </div>
+            )}
           </div>
         </div>
       )}
-      </>
-  )
+    </>
+  );
 }

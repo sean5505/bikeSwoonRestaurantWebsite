@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import style from "./BookingForm.module.css";
-import { ReservationContext } from "../../context/AppContext";
-import { getAuth } from "firebase/auth";
+import { ReservationContext } from "../../../context/AppContext";
+
 import { useForm } from "react-hook-form";
-import { ReservationData } from "../../types/types";
+import { ReservationData } from "../../../types/types";
+import { auth } from "../../../firebase";
 
 type ReservationProps = {
   availableTimes: any;
@@ -11,11 +12,9 @@ type ReservationProps = {
   submitForm: any;
 };
 
-
 export default function BookingForm(props: ReservationProps) {
   const { setResData } = useContext(ReservationContext);
 
-  const auth = getAuth();
   const {
     register,
     handleSubmit,

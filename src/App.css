@@ -13,11 +13,11 @@ html:hover {
 }
 
 form {
-  padding: .7rem 0;
-
+  padding: 0.7rem 0;
 }
 
-form > input, form > select {
+form > input,
+form > select {
   width: 12em;
 }
 label {
@@ -25,8 +25,6 @@ label {
   font-size: 1.5rem;
   text-transform: capitalize;
 }
-
-
 
 input,
 select {
@@ -44,6 +42,12 @@ button:hover {
   cursor: url("../assets/cursor.png"), pointer;
   color: white;
   box-shadow: 0 0 5px white;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.497);
 }
 
 input:hover {

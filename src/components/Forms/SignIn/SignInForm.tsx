@@ -2,25 +2,21 @@ import { useContext, useState } from "react";
 import style from "./SignInForm.module.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {  Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { ModalContext, UserAuth } from "../../../context/AppContext";
+import { UserAuth } from "../../../context/AppContext";
 import GoogleSignIn from "./GoogleSignIn";
 import { SignInData } from "../../../types/types";
+import { auth } from "../../../firebase";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
-  const auth = getAuth();
-  const { openModal } = useContext(ModalContext);
   const userContext = useContext(UserAuth);
   const { setIsUserLoggedIn } = userContext || {};
-  
+
   const {
     register,
     handleSubmit,
@@ -36,8 +32,7 @@ export default function SignInForm() {
     setShowPassword(!showPassword);
   };
 
-
-  const onSubmit = (data : SignInData) => {
+  const onSubmit = async (data: SignInData) => {
     signInWithEmailAndPassword(auth, data.Email, data.Password)
       .then(() => {
         setIsUserLoggedIn(true);
@@ -45,15 +40,16 @@ export default function SignInForm() {
       })
       .catch((error) => {
         setShowError(true);
-        toast(error.code);
+        toast.error(error.code);
         console.log(error);
       });
   };
 
   return (
     <>
-      <h2>Sign In</h2>
+      
       <form className={style.SignInForm} onSubmit={handleSubmit(onSubmit)}>
+      <h2>Sign In</h2>
         <label htmlFor="email">Email</label>
         <input
           {...register("Email", {
@@ -98,17 +94,12 @@ export default function SignInForm() {
           <div className={style.buttonContainer}>
             <button
               type="submit"
-              disabled={
-                isSubmitting || 
-                !!(errors.Email || errors.Password) 
-              }
+              disabled={isSubmitting || !!(errors.Email || errors.Password)}
             >
               Login
             </button>
 
-            <GoogleSignIn/>
-
-            <button onClick={openModal}>Create New Account</button>
+            <GoogleSignIn />
           </div>
         </>
         {showError ? (

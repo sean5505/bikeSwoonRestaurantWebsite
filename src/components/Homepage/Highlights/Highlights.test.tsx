@@ -1,17 +1,22 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {render, screen, } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import Highlights from "./Highlights";
 import { menuItems } from "../../Menu/menuItemsData";
 import { Provider } from "react-redux";
 import store from "../../../app/store";
 import { MemoryRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 describe("Highlights", () => {
   beforeEach(async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <Highlights />
+          <QueryClientProvider client={queryClient}>
+            <Highlights />
+          </QueryClientProvider>
         </MemoryRouter>
       </Provider>
     );
@@ -25,9 +30,5 @@ describe("Highlights", () => {
       expect(itemName).to.exist;
     });
   });
-  it("Order Now button renders Menu Page", () => {
-    const orderButton = screen.getByText("Order Now!");
-    fireEvent.click(orderButton);
-    waitFor(() => expect(screen.getByText("Main Menu")).toBeInTheDocument()); //using this to convery page navigation but there are better ways
-  });
+  
 });

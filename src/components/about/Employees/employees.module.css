@@ -1,34 +1,13 @@
 
-.employees .employeesHead {
-  text-align: center;
-}
-
-.employeesHead h1 {
-  margin: 0;
-  padding-top: 1.2rem;
-  text-decoration: underline;
-}
-
-.selectEmployees {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.employees main {
+.employeeContainer {
   display: flex;
   justify-content: center;
- 
-}
-
-.employees .employeeList {
-  width: 85%;
 }
 
 .employee {
   border: 2px solid black;
   text-align: center;
-
+  list-style: none;
 }
 
 .employeeImg {
@@ -44,5 +23,3 @@
   color: purple;
   background-color: black;
 }
-
-

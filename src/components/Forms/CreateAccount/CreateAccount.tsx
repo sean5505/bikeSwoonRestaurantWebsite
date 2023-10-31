@@ -1,24 +1,19 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import style from "./CreateAccount.module.css";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
-import { ModalContext, UserAuth } from "../../../context/AppContext";
+import { UserAuth } from "../../../context/AppContext";
 import { CreateAccountData } from "../../../types/types";
+import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, fireStoreDB } from "../../../firebase";
 
 // https://firebase.google.com/docs/auth/web/manage-users  --> could be interesting for an admin
 export default function CreateAccount() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const { closeModal } = useContext(ModalContext);
   const { setIsUserLoggedIn } = useContext(UserAuth);
-  const auth = getAuth();
 
   const {
     register,
@@ -27,8 +22,7 @@ export default function CreateAccount() {
     watch,
   } = useForm({
     defaultValues: {
-      FirstName: "",
-      LastName: "",
+      Name: "",
       Email: "",
       Password: "",
       ConfirmPassword: "",
@@ -43,65 +37,63 @@ export default function CreateAccount() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const onSubmit = (data : CreateAccountData) => {
+  const onSubmit = async (data: CreateAccountData, e: any) => {
+    e.preventDefault();
     if (data.Password === data.ConfirmPassword) {
-      createUserWithEmailAndPassword(auth, data.Email, data.Password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          const displayName = `${data.FirstName} ${data.LastName}`;
-          updateProfile(user, {
-            displayName: displayName,
-          });
-          toast("Account Successfully Created");
-          closeModal();
-          setIsUserLoggedIn(true);
-        })
-        .catch((error) => {
-          console.log(error);
-          toast(error.message);
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          data.Email,
+          data.Password
+        );
+        const user = userCredential.user;
+
+        await updateProfile(user, {
+          displayName: data.Name,
+          photoURL: "https://static.thenounproject.com/png/574704-200.png",
         });
+        await addDoc(collection(fireStoreDB, "allUsers"),{
+          ...data,
+          CreationDate: serverTimestamp(),
+          userID: userCredential.user.uid,
+        })
+
+        await setDoc(doc(fireStoreDB, "users", userCredential.user.uid), {
+          ...data,
+          img: user.photoURL,
+          CreationDate: serverTimestamp(),
+          userID: userCredential.user.uid,
+        });
+        
+        toast.success("Account Successfully Created");
+
+        setIsUserLoggedIn(true);
+      } catch (error) {
+        console.log(error);
+        toast.error((error as Error).message);
+      }
     }
   };
 
   return (
     <>
-      <h2>Create Your Account</h2>
       <form className={style.createAccount} onSubmit={handleSubmit(onSubmit)}>
         <>
-          <label htmlFor="FirstName">First Name</label>
+          <label htmlFor="Name">Name</label>
           <input
-            {...register("FirstName", {
+            {...register("Name", {
               required: { value: true, message: "Required" },
               minLength: {
-                value: 3,
-                message: "Must be at least 3 characters"
-              }
+                value: 6,
+                message: "Must be at least 6 characters",
+              },
             })}
             type="text"
-            id="FirstName"
-            className={errors.FirstName ? style.inputFieldError : " "}
+            id="Name"
+            className={errors.Name ? style.inputFieldError : " "}
           />
-          {errors.FirstName ? (
-            <span className={style.error}>{errors.FirstName?.message}</span>
-          ) : null}
-        </>
-
-        <>
-          <label htmlFor="LastName">Last Name</label>
-          <input
-            {...register("LastName", {
-              required: { value: true, message: "Required" },
-              minLength: {
-                value: 3,
-                message: "Must be at least 3 characters"
-              }
-            })}
-            type="text"
-            id="LastName"
-            className={errors.LastName ? style.inputFieldError : " "}
-          />
-          {errors.LastName ? (
-            <span className={style.error}>{errors.LastName?.message}</span>
+          {errors.Name ? (
+            <span className={style.error}>{errors.Name?.message}</span>
           ) : null}
         </>
 
@@ -174,14 +166,16 @@ export default function CreateAccount() {
             </span>
           </div>
           {errors.ConfirmPassword ? (
-            <span className={style.error}>{errors.ConfirmPassword?.message}</span>
+            <span className={style.error}>
+              {errors.ConfirmPassword?.message}
+            </span>
           ) : null}
         </>
         <button
           type="submit"
           disabled={
-            isSubmitting || 
-            !!(errors.Email || errors.Password || errors.ConfirmPassword) 
+            isSubmitting ||
+            !!(errors.Email || errors.Password || errors.ConfirmPassword)
           }
           style={{ marginTop: "2rem" }}
         >

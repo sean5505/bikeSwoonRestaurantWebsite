@@ -1,18 +1,17 @@
-import  {  useContext } from "react";
+
 import style from "./Navbar.module.css";
-import { NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { Close } from "@mui/icons-material";
-import { ModalContext } from "../../../context/AppContext";
-import { getAuth } from "firebase/auth";
-import Modal from "../../utils/Modal/Modal";
-import AuthDetails from "../../AuthDetails";
+
+import ProfileImage from "../../ProfileImage/ProfileImg";
+import { auth } from "../../../firebase";
 
 export const navLinks = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
   { title: "Menu", path: "/menu" },
   { title: "Reservations", path: "/reservations" },
-  { title: "Cart", path: "/order" },
+  { title: "Cart", path: "/cart" },
 ];
 
 type NavProps = {
@@ -21,20 +20,20 @@ type NavProps = {
 
 }
 export default function Navbar(props : NavProps) {
-  const auth = getAuth();
   const conditionalNavLink = [{ title: "Login", path: "/login" }];
 
   const allNavLinks = !auth.currentUser
     ? [...navLinks, ...conditionalNavLink]
     : [...navLinks];
-  const { openModal } = useContext(ModalContext);
+
 
   return (
     <>
       <nav ref={props.navRef}>
         <ul className={style.navLinks}>
+          
           {allNavLinks.map((link) => (
-            <li key={link.title}>
+            <li key={link.title} title={link.title}>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? style.navLinkActive : style.navLink
@@ -45,18 +44,7 @@ export default function Navbar(props : NavProps) {
               </NavLink>
             </li>
           ))}
-          {auth.currentUser ? (
-            <>
-              <div className={style.navLink} onClick={openModal}>
-                Sign Out
-              </div>{" "}
-              <Modal>
-                <AuthDetails />
-              </Modal>{" "}
-            </>
-          ) : (
-            ""
-          )}
+          <ProfileImage/>
 
           <button className={style.navBtn} onClick={props.showNavBar}>
             <Close className={style.closeButton} />

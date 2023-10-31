@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./Cart.module.css";
 import CartContainer from "../../components/Cart/CartContainer/CartContainer";
-import { useContext} from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../context/AppContext";
 import { useAppSelector } from "../../app/hooks";
 import { Link } from "react-router-dom";

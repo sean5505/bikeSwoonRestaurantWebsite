@@ -6,4 +6,11 @@
     justify-content: center;
     text-align: center;
     line-height: 2rem;
+    position: relative;
+}
+
+.skipButton{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

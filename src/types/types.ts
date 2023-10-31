@@ -8,8 +8,7 @@ export type ReservationData = {
   };
 
   export type CreateAccountData = {
-    FirstName: string;
-    LastName: string;
+    Name: string;
     Email: string;
     Password: string;
     ConfirmPassword: string;

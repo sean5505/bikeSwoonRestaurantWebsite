@@ -49,11 +49,11 @@ For effective state management in the shopping cart functionality, I utilized `R
 
 To enhance code maintainability during iterative development and minimize class name conflicts, I employed `Module-Based CSS Files`. 
 
-For login authentication, I opted to utilize `Firebase`, taking advantage of serveral features such as createEmailAndPassword and googleSignIn for managing users. 
+For login authentication, I opted to utilize `Firebase`, taking advantage of serveral features such as Authentication, Firestore for database managment, and Firebase Cloud Storage, giving the user the option to update their profile image.
 
 For testing, I utilized `Vitest`, primairly since I used Vite as the build tool for this project and Vitest is optimized for usage with Vite. I extended the testing utility with `React-Testing-Library` to elevate DOM testing capabilities.
 
-In addition, I took advantage of serveral popular libraries such as `React-Hook-Form` improve code quality for form validation.  
+In addition, I took advantage of serveral popular libraries such as `React-Hook-Form` to improve code quality for form validation.  
 
 ## Challenges
 
@@ -73,6 +73,17 @@ One of the more time-consuming errors was, *TypeError: Cannot destructure proper
 
 Ultimately, Integrating testing into the application has enabled me to streamline the manual testing process before deployment, guaranteeing the effectiveness of the elements being tested. Going forward, I aim to expand my testing suite to improve code coverage.
 
+#### **Integrating Firebase**
+
+Originally, my decision to integrate Firebase into the application was driven by my desire to add user authentication to the application. However, I soon realized that Firebase had offered broader functionalities and I wanted to take advantage of these features. I leveraged `Firestore` for efficient database management and utilized Firebases Cloud Storage for storing images used within the application. Since I added a FireStore to the application, I would need to fetch data to use it in my application, so I employed `Tanstack Query(ReactQuery)` to handle the data fetching process. 
+
+After doing so, I managed to synchronize the database and give the users the option to update their profiles, maintaining a separate collection to record each individual account creation.
+
+One of the more notable challenges I encountered while working with Firebase involved updating sensitive actions, such as the password or email associated with the account and user account deletions. The documentation offered by firebase made note of this problem, but did not exactly offer comprehensive guidance for overcoming this hurdle. I found a solution online involving firebase’s EmailAuthProvider object, which was absent from the official documentation.
+
+In conclusion, leveraging Firebase’s built-in methods helped to facilitate the integration of CRUD(Create, Read, Update, Delete) operations within the application. In the future, I hope to explore deeper the vast array of features Firebase has to offer.
+
+
 
 ## Conclusion
 
@@ -80,8 +91,9 @@ In conclusion, this project served as a valuable platform for me to apply and va
 
 ---
 ## Future Plans
-- UI/UX/Responsive improvements
+- **Code Optimization / Scalability**
+- UI/UX/Responsive improvements -- might do a complete overhaul... Accesibility?
+- menuItems data moved over to database, replace code in Menu components...sigh 
+- Work on profile page -- redesign? responsiveness, form validation...
 - Improve test sophistication/ test coverage
-- Code Optimization / Scalability
-- New Features - Psuedo Payment Page? --stripe, Profile Page for active User, etc. 
-
+- New Features - Psuedo Payment Page? --stripe, implement coupon functionality

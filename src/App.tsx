@@ -1,19 +1,25 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Reservations from "./pages/Reservations/Reservations";
 import BookingConfirmation from "./pages/BookingConfirmed/BookingConfirmation";
 import Menu from "./pages/Menu";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import About from "./pages/About";
+import About from "./pages/About/About";
 import Cart from "./pages/Cart/Cart";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { useContext, useEffect} from "react";
-import { UserAuth } from "./context/AppContext";
+import { useContext, useEffect } from "react";
+import { ReservationContext, UserAuth } from "./context/AppContext";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
-
+import Profile from "./pages/Profile/Profile";
+import { useAppSelector } from "./app/hooks";
 
 <link
   href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
@@ -22,7 +28,13 @@ import { onAuthStateChanged } from "firebase/auth";
 
 export default function App() {
   const { setIsUserLoggedIn } = useContext(UserAuth);
-  
+  const { resData } = useContext(ReservationContext);
+  const cart = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -36,6 +48,12 @@ export default function App() {
     };
   }, []);
 
+  const RequireAuthentication = ({ children }: any) => {
+    return auth.currentUser ? children : <Navigate to="/login" />;
+  };
+  const RequireData = ({ children }: any) => {
+    return resData ? children : <Navigate to="/reservations" />;
+  };
   return (
     <>
       <ToastContainer
@@ -50,15 +68,31 @@ export default function App() {
         pauseOnHover={false}
         theme="dark"
       />
+
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reservations" element={<Reservations />} />
-          <Route path="/bookingConfirmed" element={<BookingConfirmation />} />
+          <Route
+            path="/bookingConfirmed"
+            element={
+              <RequireData>
+                <BookingConfirmation />
+              </RequireData>
+            }
+          />
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
-          <Route path="order" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={<About />} />
+          <Route
+            path="/profile"
+            element={
+              <RequireAuthentication>
+                <Profile />
+              </RequireAuthentication>
+            }
+          />
         </Routes>
       </Router>
     </>

@@ -1,5 +1,4 @@
-import  { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import Layout from "../../components/Layout";
 import style from "./BookingConfirmation.module.css";
 import ReservationConfirmed from "../../components/ReservationConfirmed";
@@ -19,16 +18,7 @@ export default function BookingConfirmation() {
             color: theme.secondaryColor,
           }}
         >
-          {resData ? (
-            <ReservationConfirmed resData={resData} />
-          ) : (
-            <>
-              <p>Click the button below to submit a reservation!</p>
-              <Link to="/reservations">
-                <button>Go</button>
-              </Link>
-            </>
-          )}
+          <ReservationConfirmed resData={resData} />
         </div>
       </Layout>
     </>

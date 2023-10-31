@@ -1,18 +1,23 @@
 import { useContext } from "react";
 import style from "./Home.module.css";
-import { ReservationContext, UserAuth } from "../../context/AppContext";
+import {
+  ReservationContext,
+  ThemeContext,
+  UserAuth,
+} from "../../context/AppContext";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Homepage/Hero/Hero";
 import Highlights from "../../components/Homepage/Highlights/Highlights";
 import Testimonials from "../../components/Homepage/Testimonials/Testimonials";
 import Dining from "../../components/Homepage/Dining/Dining";
-import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
+import { auth } from "../../firebase";
+import { Link } from "react-router-dom";
 
 export default function Home() {
+  const { theme } = useContext(ThemeContext);
   const { resData } = useContext(ReservationContext);
   const { isUserLoggedIn } = useContext(UserAuth);
-  const auth = getAuth();
 
   return (
     <>
@@ -38,8 +43,36 @@ export default function Home() {
           </h2>
         ) : null}
         <Hero />
-        <Highlights />
-        <Testimonials />
+        <section
+          className={style.highlights}
+          style={{ backgroundColor: theme.secondaryColor }}
+        >
+          <header
+            className={style.highlightsHead}
+            style={{
+              backgroundColor: theme.primaryColor,
+              color: theme.secondaryColor,
+            }}
+          >
+            <h1>Specials</h1>
+            <Link to="/menu">
+              <button className={style.highlightsHeadButton}>Order Now!</button>
+            </Link>
+          </header>
+          <Highlights />
+        </section>
+        <section
+          className={style.testimonials}
+          style={{
+            backgroundColor: theme.primaryColor,
+            color: theme.secondaryColor,
+          }}
+        >
+          <header className={style.testimonialsHead}>
+            <h1>Testimonials</h1>
+          </header>
+          <Testimonials />
+        </section>
         <Dining />
       </Layout>
     </>

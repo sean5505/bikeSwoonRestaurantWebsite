@@ -14,3 +14,39 @@
   background-color: #070c26;
   color: #be29ec;
 }
+
+.highlights {
+  text-align: center;
+}
+
+.highlightsHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid purple;
+  position: relative;
+}
+
+.highlightsHead h1 {
+  text-decoration: underline;
+}
+
+.highlightsHead button {
+  position: absolute;
+  right: 0;
+  bottom: 30%;
+}
+
+.testimonials {
+  text-align: center;
+}
+.testimonialsHead{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid purple;
+}
+
+.testimonials .header {
+  text-decoration: underline;
+}

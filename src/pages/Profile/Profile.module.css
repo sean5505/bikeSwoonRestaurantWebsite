@@ -1,0 +1,32 @@
+.profileContainer {
+  min-height: 80dvh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.left {
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.profileImg {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
+}
+
+@media (max-width: 768px) {
+    .profileContainer {
+        flex-direction: row-reverse;
+      }
+     
+    
+}

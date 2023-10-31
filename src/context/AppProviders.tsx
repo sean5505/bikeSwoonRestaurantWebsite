@@ -1,16 +1,15 @@
-import React from 'react';
-import {  ReservationContextProvider, ThemeContextProvider, ModalContextProvider, UserAuthProvider } from './AppContext';
+import React from "react";
+import {
+  ReservationContextProvider,
+  ThemeContextProvider,
+  UserAuthProvider,
+} from "./AppContext";
 
-
-function AppProviders({ children }: {children: React.ReactNode}) {
+function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <ReservationContextProvider>
       <ThemeContextProvider>
-        <ModalContextProvider>
-          <UserAuthProvider>
-            {children}
-          </UserAuthProvider>
-        </ModalContextProvider>
+        <UserAuthProvider>{children}</UserAuthProvider>
       </ThemeContextProvider>
     </ReservationContextProvider>
   );

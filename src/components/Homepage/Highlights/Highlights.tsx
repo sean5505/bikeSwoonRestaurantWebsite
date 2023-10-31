@@ -1,68 +1,46 @@
-import { useContext } from "react";
-import style from "./Highlights.module.css";
-import { Link } from "react-router-dom";
-import { ThemeContext } from "../../../context/AppContext";
 import Carousel from "../../utils/Carousel/Carousel";
-import { useAppDispatch } from "../../../app/hooks";
-import { addToCart } from "../../../features/cart/cartSlice";
-import { Dispatch } from "@reduxjs/toolkit";
-import { MenuItems } from "../../../types/types";
-import { menuItems } from "../../Menu/menuItemsData";
-
-const createHighlight = (
-  highlight: MenuItems,
-  key: number,
-  dispatch: Dispatch
-) => {
-  return (
-    <li key={key} className={style.item}>
-      <img src={highlight.img} alt={highlight.name} height={"200px"} />
-      <div className={style.itemHead}>
-        <h4>{highlight.name}</h4>
-        <h4 className={style.price}> ${highlight.price}</h4>
-      </div>
-
-      <p className={style.itemDescription}>{highlight.desc}</p>
-      <button onClick={() => dispatch(addToCart(highlight))}>
-        Add To Cart
-      </button>
-    </li>
-  );
-};
+import FetchAndFilterFromDB from "../../utils/FetchAndFilterFromDB";
+import CreateHighlight from "./CreateHighlight";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import { DocumentData } from "firebase/firestore";
+import style from "./Highlights.module.css"
 
 export default function Highlights() {
-  const { theme } = useContext(ThemeContext);
-  const dispatch = useAppDispatch();
-  const specials = menuItems.filter((item: MenuItems) =>
-    item.type.toLowerCase().includes("specials")
-  );
+  const { isPending, error, data } = useQuery<DocumentData[] | undefined>({
+    queryKey: ["highlightData"],
+    queryFn: () => getData(),
+  });
+
+  if (isPending) return <LoadingSpinner />;
+
+  if (error) return "An error has occurred: " + error.message;
+
+  async function getData() {
+    try {
+      const dataFromFireStore = await FetchAndFilterFromDB(
+        "menuItems",
+        "type",
+        "Specials"
+      );
+      if (dataFromFireStore.length === 0) {
+        throw new Error("Highlight data could not be found");
+      } else return dataFromFireStore;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 
   return (
     <>
-      <section
-        className={style.highlights}
-        style={{ backgroundColor: theme.secondaryColor }}
-      >
-        <header
-          className={style.highlightsHead}
-          style={{
-            backgroundColor: theme.primaryColor,
-            color: theme.secondaryColor,
-          }}
-        >
-          <h1>Specials</h1>
-          <Link to="/menu">
-            <button className={style.highlightsHeadButton}>Order Now!</button>
-          </Link>
-        </header>
-        <main>
-          <Carousel>
-            {specials.map((highlight) =>
-              createHighlight(highlight, highlight.id, dispatch)
-            )}
-          </Carousel>
-        </main>
-      </section>
+      <main className={style.highlightsContainer}>
+        <Carousel>
+          {data?.map((highlight) => (
+            <CreateHighlight highlight={highlight} key={highlight.id} />
+          ))}
+        </Carousel>
+      </main>
     </>
   );
 }

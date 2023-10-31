@@ -1,0 +1,23 @@
+.userInfoForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+.userInfoForm button{
+  width: 50%;
+  margin-left: 3rem; /* temp */
+}
+
+.icon:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
