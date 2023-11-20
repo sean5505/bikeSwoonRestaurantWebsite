@@ -1,21 +1,21 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import style from "./SignInForm.module.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { UserAuth } from "../../../context/AppContext";
-import GoogleSignIn from "./GoogleSignIn";
+import GoogleSignIn from "../../Buttons/GoogleSignIn";
+import CreateNewAccount from "../../Buttons/CreateNewAccount"
 import { SignInData } from "../../../types/types";
 import { auth } from "../../../firebase";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false)
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
-  const userContext = useContext(UserAuth);
-  const { setIsUserLoggedIn } = userContext || {};
+
 
   const {
     register,
@@ -35,7 +35,6 @@ export default function SignInForm() {
   const onSubmit = async (data: SignInData) => {
     signInWithEmailAndPassword(auth, data.Email, data.Password)
       .then(() => {
-        setIsUserLoggedIn(true);
         navigate("/");
       })
       .catch((error) => {
@@ -47,9 +46,9 @@ export default function SignInForm() {
 
   return (
     <>
-      
+      <div className={style.formContainer}>
       <form className={style.SignInForm} onSubmit={handleSubmit(onSubmit)}>
-      <h2>Sign In</h2>
+      <>
         <label htmlFor="email">Email</label>
         <input
           {...register("Email", {
@@ -64,9 +63,13 @@ export default function SignInForm() {
           })}
           type="text"
           id="email"
+          placeholder="Email"
           className={errors.Email ? style.inputFieldError : " "}
+          data-testid = "email-test"
         />
         <p className={style.error}>{errors.Email?.message}</p>
+        </>
+        <>
         <label htmlFor="password">Password </label>
         <div className={style.passwordInput}>
           <input
@@ -78,34 +81,42 @@ export default function SignInForm() {
               },
               onChange: () => {
                 setShowError(false);
+                setShowPasswordToggle(true)
               },
             })}
             type={showPassword ? "text" : "password"}
             id="password"
+            placeholder="Password"
             className={errors.Password ? style.inputFieldError : " "}
+            data-testid = 'password-test'
           />
           <span className={style.togglePassword} onClick={handleTogglePassword}>
-            {showPassword ? <VisibilityOff /> : <Visibility />}
+            {showPasswordToggle? (showPassword ? <VisibilityOff /> : <Visibility />): null }
           </span>
         </div>
         <p className={style.error}>{errors.Password?.message}</p>
+        </>
 
         <>
-          <div className={style.buttonContainer}>
+       
             <button
               type="submit"
               disabled={isSubmitting || !!(errors.Email || errors.Password)}
             >
               Login
             </button>
-
-            <GoogleSignIn />
-          </div>
+            
+          
         </>
         {showError ? (
-          <p className={style.error}>Invalid Email Or Password</p>
+          <p id="error-message" className={style.error}>Invalid Email Or Password</p>
         ) : null}
       </form>
+      <div className={style.buttonContainer}>
+      <GoogleSignIn />
+     <CreateNewAccount />
+     </div>
+      </div>
     </>
   );
 }

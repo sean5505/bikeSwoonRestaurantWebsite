@@ -6,7 +6,6 @@ import { ThemeContext } from "../../context/AppContext";
 import SignIn from "../../components/Forms/SignIn/SignInForm";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
-import CreateNewAccount from "../../components/Buttons/CreateNewAccount";
 
 export default function Login() {
   const { theme } = useContext(ThemeContext);
@@ -29,13 +28,15 @@ export default function Login() {
             color: theme.secondaryColor,
           }}
         >
+          <div className={style.details}>
           <Star
             className={style.logo}
             style={{ color: theme.secondaryColor, fontSize: "3rem" }}
           />
-
+          <h2>BikeSwoon</h2>
+          <p>Sign in to access your personalized account </p>
+          </div>
           <SignIn />
-          <CreateNewAccount />
         </section>
       </Layout>
     </>

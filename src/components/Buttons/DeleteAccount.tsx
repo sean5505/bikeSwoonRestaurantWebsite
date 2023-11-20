@@ -1,4 +1,8 @@
-import { EmailAuthProvider, deleteUser, reauthenticateWithCredential } from "firebase/auth";
+import {
+  EmailAuthProvider,
+  deleteUser,
+  reauthenticateWithCredential,
+} from "firebase/auth";
 
 import { auth, fireStoreDB } from "../../firebase";
 import { toast } from "react-toastify";
@@ -16,7 +20,6 @@ function DeleteAccount() {
     userProvidedPassword
   );
 
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -26,16 +29,16 @@ function DeleteAccount() {
   };
 
   async function deleteAccount() {
-    const user = auth.currentUser
+    const user = auth.currentUser;
     if (user) {
       try {
         reauthenticateWithCredential(user, credential).then(async () => {
-        await deleteDoc(doc(fireStoreDB, "users", user.uid));
-        await deleteUser(user).then(() => {
-          toast.success("Account Successfully Deleted");
-          closeModal()
+          await deleteDoc(doc(fireStoreDB, "users", user.uid));
+          await deleteUser(user).then(() => {
+            toast.success("Account Successfully Deleted");
+            closeModal();
+          });
         });
-      });
       } catch (error) {
         console.error("Error deleting account:", error);
         toast.error("An error occurred while deleting the account");
@@ -62,14 +65,16 @@ function DeleteAccount() {
       >
         <p>Are you sure?</p>
         <p>
-          This Action will permanetly delete all data associated with 
+          This Action will permanetly delete all data associated with
           <span> {auth.currentUser?.email}</span>
         </p>
-       <div style={{textAlign:'center'}} >
-        <label> Current Password</label>
-        <input type="password"
-        value={userProvidedPassword}
-        onChange={(e) => setUserProvidedPassword(e.target.value)}/>
+        <div style={{ textAlign: "center" }}>
+          <label> Current Password</label>
+          <input
+            type="password"
+            value={userProvidedPassword}
+            onChange={(e) => setUserProvidedPassword(e.target.value)}
+          />
         </div>
       </Modal>{" "}
     </>

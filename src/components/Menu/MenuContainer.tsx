@@ -1,11 +1,8 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/AppContext";
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem/MenuItem";
 import { menuItems } from "./menuItemsData";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import { useAppDispatch } from "../../app/hooks";
-
-import { addToCart } from "../../features/cart/cartSlice";
 import style from "./MenuContainer.module.css";
 import { MenuItems } from "../../types/types";
 
@@ -45,12 +42,8 @@ export default function MenuContainer() {
   const [sortedItems, setSortedItems] = useState(menuItems);
   const [searchText, setSearchText] = useState("");
   const [activeButton, setActiveButton] = useState("All");
-  const dispatch = useAppDispatch();
 
-  const updateCart = (item: MenuItems) => {
-    dispatch(addToCart(item));
-  };
-
+ 
   const handleSortClick = () => {
     const newSortOrder = !sortOrder;
     const newSortedItems = sortByPrice(menuItems, newSortOrder, searchText);
@@ -121,7 +114,7 @@ export default function MenuContainer() {
         </div>
         <ul className={style.menuItems}>
           {sortedItems.map((item) => (
-            <MenuItem key={item.id} item={item} updateCart={updateCart} />
+            <MenuItem key={item.id} item={item}  />
           ))}
         </ul>
       </section>

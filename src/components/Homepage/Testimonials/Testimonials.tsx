@@ -4,7 +4,7 @@ import Carousel from "../../utils/Carousel/Carousel";
 import { DocumentData } from "firebase/firestore";
 import FetchFromDB from "../../utils/FetchFromDB";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../utils/LoadingSpinner/LoadingSpinner";
 
 export default function Testimonials() {
 

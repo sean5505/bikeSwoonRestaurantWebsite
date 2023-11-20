@@ -125,7 +125,7 @@ export default function BookingForm(props: ReservationProps) {
         </>
 
         <>
-          <label htmlFor="res-guests">Number of guests</label>
+          <label htmlFor="res-guests">Guests</label>
           <input
             {...register("Guests", {})}
             type="number"

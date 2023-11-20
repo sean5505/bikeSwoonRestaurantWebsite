@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, setDoc, doc, updateDoc } from "firebase/firestore";
 import { getDatabase, ref, set,onValue } from "firebase/database";
 import {getStorage} from "firebase/storage"
@@ -18,5 +18,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const fireStoreDB = getFirestore(app);
 export const storage = getStorage(app)
+
 
 

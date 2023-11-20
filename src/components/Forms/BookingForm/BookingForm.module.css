@@ -3,11 +3,8 @@
   display: grid;
   gap: 1em;
   place-items: center;
-  background-color: lightgrey;
   color: black;
- 
 }
-
 
 .formSubmitButton {
   border-radius: 50px;
@@ -21,7 +18,6 @@
 }
 
 .invalid {
-  /* doesnt work, may need to create an isInvalid function */
   border: 2px solid red;
   position: relative;
 }

@@ -27,10 +27,6 @@
   position: relative;
 }
 
-.highlightsHead h1 {
-  text-decoration: underline;
-}
-
 .highlightsHead button {
   position: absolute;
   right: 0;
@@ -47,6 +43,3 @@
   border: 2px solid purple;
 }
 
-.testimonials .header {
-  text-decoration: underline;
-}

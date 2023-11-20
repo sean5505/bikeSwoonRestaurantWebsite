@@ -34,7 +34,7 @@
 .tableHead td:first-child {
   border-left: none;
 }
-.idk {
+.cartSummary {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +43,7 @@
 }
 
 @media (min-width: 768px) {
-  .idk {
+  .cartSummary {
     flex-direction: row;
     justify-content: space-around;
   }

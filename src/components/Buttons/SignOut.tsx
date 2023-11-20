@@ -1,16 +1,14 @@
 import { signOut } from "firebase/auth";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { clearCart } from "../../features/cart/cartSlice";
-import { UserAuth } from "../../context/AppContext";
 import ProfileImage from "../ProfileImage/ProfileImg";
 import Modal from "../utils/Modal/Modal";
 
 function SignOut() {
-  const { setIsUserLoggedIn } = useContext(UserAuth);
   const navigate = useNavigate();
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -26,7 +24,6 @@ function SignOut() {
   const signOutUser = () => {
     signOut(auth)
       .then(() => {
-        setIsUserLoggedIn(false);
         closeModal();
         if (cart.length >= 1) {
           dispatch(clearCart());
@@ -49,7 +46,7 @@ function SignOut() {
         performFunction={signOutUser}
       >
         <ProfileImage />
-        <p>You are currently Signed In as {auth.currentUser?.email}</p>
+        <p>You are currently signed in as {auth.currentUser?.email}</p>
         <p>Click the button below to sign out</p>
       </Modal>{" "}
     </>

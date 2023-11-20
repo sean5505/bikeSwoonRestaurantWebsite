@@ -11,7 +11,7 @@ export default function CartContainer() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalItems, setTotalItems] = useState<number>(cart.length);
 
-  // will pass down to cartItem component for when there is an increment or decrement in an individals item price, this function will be called
+
   function updateTotal() {
     let price = 0;
     let quantity = 0;
@@ -47,8 +47,8 @@ export default function CartContainer() {
         ))}
         </tbody>
       </table>
-      <div className={style.idk}>
-        <Coupon />
+      <div className={style.cartSummary}>
+        <Coupon totalPrice= {totalPrice} setTotalPrice = {setTotalPrice} />
         <OrderSummary totalPrice={totalPrice} totalItems={totalItems} />
       </div>
       </div>

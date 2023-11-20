@@ -3,6 +3,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 70dvh;
+}
+
+.details {
+  text-align: center;
+}
+.details > h2 {
+  margin-top: 1rem;
 }
 .logo {
   animation: logo 4s infinite linear;
@@ -14,5 +22,12 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .loginFormContainer {
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }

@@ -15,7 +15,7 @@ import Cart from "./pages/Cart/Cart";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useContext, useEffect } from "react";
-import { ReservationContext, UserAuth } from "./context/AppContext";
+import { ReservationContext } from "./context/AppContext";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import Profile from "./pages/Profile/Profile";
@@ -27,7 +27,7 @@ import { useAppSelector } from "./app/hooks";
 ></link>;
 
 export default function App() {
-  const { setIsUserLoggedIn } = useContext(UserAuth);
+
   const { resData } = useContext(ReservationContext);
   const cart = useAppSelector((state) => state.cart);
 
@@ -38,9 +38,10 @@ export default function App() {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsUserLoggedIn(true);
+        localStorage.setItem('isAuthenticated', 'true')
       } else {
-        setIsUserLoggedIn(false);
+
+        localStorage.setItem('isAuthenticated','false')
       }
     });
     return () => {
@@ -48,8 +49,11 @@ export default function App() {
     };
   }, []);
 
+ 
+  
   const RequireAuthentication = ({ children }: any) => {
-    return auth.currentUser ? children : <Navigate to="/login" />;
+    const isAuthenticated = localStorage.getItem('isAuthenticated') //firebase features inbuilt state persistance but that was persistently annoying 
+    return isAuthenticated === 'true' ? children : <Navigate to="/login" />;
   };
   const RequireData = ({ children }: any) => {
     return resData ? children : <Navigate to="/reservations" />;
@@ -90,7 +94,7 @@ export default function App() {
             element={
               <RequireAuthentication>
                 <Profile />
-              </RequireAuthentication>
+             </RequireAuthentication>
             }
           />
         </Routes>

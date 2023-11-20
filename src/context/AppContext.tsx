@@ -3,7 +3,6 @@ import React, {
   createContext,
   SetStateAction,
   ReactNode,
-  Dispatch,
 } from "react";
 
 type ReservationContextType = {
@@ -65,30 +64,10 @@ function ThemeContextProvider({ children }: { children: ReactNode }) {
   );
 }
 
-type UserAuthProps = {
-  isUserLoggedIn: boolean;
-  setIsUserLoggedIn: Dispatch<SetStateAction<boolean>>;
-};
-const UserAuth = createContext<UserAuthProps>({
-  isUserLoggedIn: false,
-  setIsUserLoggedIn: () => {},
-});
-
-function UserAuthProvider({ children }: { children: ReactNode }) {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
-
-  return (
-    <UserAuth.Provider value={{ isUserLoggedIn, setIsUserLoggedIn }}>
-      {children}
-    </UserAuth.Provider>
-  );
-}
 
 export {
   ReservationContext,
   ReservationContextProvider,
   ThemeContext,
   ThemeContextProvider,
-  UserAuth,
-  UserAuthProvider,
 };

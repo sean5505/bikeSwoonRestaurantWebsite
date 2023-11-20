@@ -2,7 +2,7 @@ import Carousel from "../../utils/Carousel/Carousel";
 import FetchAndFilterFromDB from "../../utils/FetchAndFilterFromDB";
 import CreateHighlight from "./CreateHighlight";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../utils/LoadingSpinner/LoadingSpinner";
 import { DocumentData } from "firebase/firestore";
 import style from "./Highlights.module.css"
 

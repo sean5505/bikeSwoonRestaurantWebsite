@@ -4,7 +4,7 @@ import FetchFromDB from "../../utils/FetchFromDB";
 import { DocumentData } from "firebase/firestore";
 import CreateEmployee from "./CreateEmployee";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../utils/LoadingSpinner/LoadingSpinner";
 
 export default function Employees() {
   const { isPending, error, data } = useQuery<DocumentData[] | undefined>({

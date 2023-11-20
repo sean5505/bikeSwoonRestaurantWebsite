@@ -1,11 +1,16 @@
-import MenuContainer from "../components/Menu/MenuContainer";
+
 import Layout from "../components/Layout";
+import MainMenuContainer from "../components/Menu/MainMenuContainer";
+
 
 export default function Menu() {
+ 
   return (
     <>
+  
       <Layout>
-        <MenuContainer />
+        <MainMenuContainer/> 
+       {/* <MenuContainer /> */}
       </Layout>
     </>
   );

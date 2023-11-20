@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach} from "vitest";
 import { Provider } from "react-redux";
 import store from "../../../app/store";
 import { MemoryRouter } from "react-router-dom";
@@ -24,7 +24,6 @@ describe("Employees", async () => {
 
   it("Employees section sucessfully renders the employees from the database", async () => {
     const dataFromSnapshot = await FetchFromDB("testimonials");
-
     await waitFor(() => {
       dataFromSnapshot?.forEach((employee) => {
         const name = screen.queryAllByText(employee.name);

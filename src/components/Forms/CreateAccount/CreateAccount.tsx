@@ -1,10 +1,9 @@
-import { useState, useContext } from "react";
+import { useState} from "react";
 import style from "./CreateAccount.module.css";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
-import { UserAuth } from "../../../context/AppContext";
 import { CreateAccountData } from "../../../types/types";
 import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, fireStoreDB } from "../../../firebase";
@@ -13,7 +12,6 @@ import { auth, fireStoreDB } from "../../../firebase";
 export default function CreateAccount() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { setIsUserLoggedIn } = useContext(UserAuth);
 
   const {
     register,
@@ -66,8 +64,6 @@ export default function CreateAccount() {
         });
         
         toast.success("Account Successfully Created");
-
-        setIsUserLoggedIn(true);
       } catch (error) {
         console.log(error);
         toast.error((error as Error).message);
@@ -93,7 +89,7 @@ export default function CreateAccount() {
             className={errors.Name ? style.inputFieldError : " "}
           />
           {errors.Name ? (
-            <span className={style.error}>{errors.Name?.message}</span>
+            <span data-testid={'name-error'} className={style.error}>{errors.Name?.message}</span>
           ) : null}
         </>
 
@@ -112,7 +108,7 @@ export default function CreateAccount() {
             className={errors.Email ? style.inputFieldError : " "}
           />
           {errors.Email ? (
-            <span className={style.error}>{errors.Email?.message}</span>
+            <span data-testid={'email-error'} className={style.error}>{errors.Email?.message}</span>
           ) : null}
         </>
 
@@ -142,7 +138,7 @@ export default function CreateAccount() {
             </span>
           </div>
           {errors.Password ? (
-            <span className={style.error}>{errors.Password?.message}</span>
+            <span data-testid={'password-error'} className={style.error}>{errors.Password?.message}</span>
           ) : null}
         </>
         <>
@@ -166,7 +162,7 @@ export default function CreateAccount() {
             </span>
           </div>
           {errors.ConfirmPassword ? (
-            <span className={style.error}>
+            <span data-testid={'confirmPassword-error'} className={style.error}>
               {errors.ConfirmPassword?.message}
             </span>
           ) : null}

@@ -1,0 +1,18 @@
+.sortContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .sortButton {
+    display: flex; /* setting button to flex to align logo with text */
+    align-items: center;
+  }
+  
+  .activeSortButton {
+    display: flex;
+    align-items: center;
+    background-color: red;
+  }

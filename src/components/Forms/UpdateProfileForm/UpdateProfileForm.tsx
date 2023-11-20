@@ -84,7 +84,7 @@ function UpdateProfileForm(props: Props) {
   }
   return (
     <>
-      <h2>Update Profile</h2>
+      <h2 className={style.header}>Update Profile</h2>
       <form className={style.userInfoForm} onSubmit={handleFormSubmit}>
         <div className={style.formInput}>
           <label>Name</label>
@@ -128,14 +128,7 @@ function UpdateProfileForm(props: Props) {
             onChange={(e) => handleFileChange(e)}
           />
         </div>
-
-        {/*
-        <div className={style.formInput}>
-            <label>Confirm Password</label>
-            <input type="Password" />
-        </div>
-  */}
-        <button type="submit" title="Update">
+        <button type="submit" title="Update Profile">
           Update
         </button>
       </form>

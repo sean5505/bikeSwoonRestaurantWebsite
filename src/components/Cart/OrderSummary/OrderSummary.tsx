@@ -1,19 +1,17 @@
 import style from "./OrderSummary.module.css";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../../../app/hooks";
-import { clearCart } from "../../../features/cart/cartSlice";
+import ClearCart from "../../Buttons/ClearCart";
 
 type Props = {
   totalPrice: number;
   totalItems: number;
 };
 function OrderSummary(props: Props) {
-  const dispatch = useAppDispatch();
   const taxRate = 0.06; // Maryland Sales Tax: 6%
   const taxReduction: number = parseFloat(
     (props.totalPrice * taxRate).toFixed(2)
   );
-  const newTotal = (props.totalPrice - taxReduction).toFixed(2);
+  const newTotal = (props.totalPrice + taxReduction).toFixed(2);
 
   return (
     <div className={style.orderSummaryContainer}>
@@ -30,7 +28,7 @@ function OrderSummary(props: Props) {
           </tr>
           <tr>
             <td>Sales Tax</td>
-            <td>-${taxReduction}</td>
+            <td>${taxReduction.toFixed(2)}</td>
           </tr>
           <tr>
             <td>Total:</td>
@@ -39,7 +37,7 @@ function OrderSummary(props: Props) {
         </tbody>
       </table>
       <div className={style.orderButtons}>
-        <button onClick={() => dispatch(clearCart())}> Clear Cart</button>
+       <ClearCart/>
         <Link to="/menu">
           <button>Add more items</button>
         </Link>

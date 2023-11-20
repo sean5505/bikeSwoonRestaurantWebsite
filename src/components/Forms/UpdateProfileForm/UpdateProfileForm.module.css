@@ -1,14 +1,14 @@
+.header{
+  text-align: center;
+}
 .userInfoForm {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
-  justify-content: center;
+ 
 }
-.userInfoForm button{
-  width: 50%;
-  margin-left: 3rem; /* temp */
-}
+
 
 .icon:hover {
   color: blue;
@@ -21,3 +21,6 @@ label {
   gap: .5rem;
 }
 
+.formInput input {
+  width: 80%;
+}

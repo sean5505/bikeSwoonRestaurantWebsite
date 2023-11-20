@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import style from "./Home.module.css";
-import {
-  ReservationContext,
-  ThemeContext,
-  UserAuth,
-} from "../../context/AppContext";
+import { ReservationContext, ThemeContext } from "../../context/AppContext";
 import Layout from "../../components/Layout";
 import Hero from "../../components/Homepage/Hero/Hero";
 import Highlights from "../../components/Homepage/Highlights/Highlights";
@@ -17,12 +13,11 @@ import { Link } from "react-router-dom";
 export default function Home() {
   const { theme } = useContext(ThemeContext);
   const { resData } = useContext(ReservationContext);
-  const { isUserLoggedIn } = useContext(UserAuth);
 
   return (
     <>
       <Layout>
-        {isUserLoggedIn && !resData ? (
+        {auth.currentUser && !resData ? (
           <motion.div
             className={style.welcomeUser}
             initial={{ opacity: 0, y: -20 }}
