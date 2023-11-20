@@ -47,7 +47,7 @@
 }
 
 @media (max-width: 480px) {
-  .SignInForm {
-    width: 60vw;
+  .SignInForm, .formContainer {
+    width: 40vw;
   }
 }
