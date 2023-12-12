@@ -25,16 +25,17 @@ label {
   text-align: center;
 }
 .formInput input {
-  width: 80%;
+  width: 100%;
 }
 
 .passwordInput{
-  position: relative;
+ position: relative;
 }
 
 .togglePassword{
   position: absolute;
-  right: 1.2rem;
+  right: 0;
+  top: 0;
 
 }
 
