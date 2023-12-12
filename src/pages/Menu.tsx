@@ -9,8 +9,7 @@ export default function Menu() {
     <>
   
       <Layout>
-        <MainMenuContainer/> 
-       {/* <MenuContainer /> */}
+        <MainMenuContainer/> {/* why did i do this? shouldnt this page component be the container?*/ }
       </Layout>
     </>
   );

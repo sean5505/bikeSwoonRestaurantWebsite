@@ -21,14 +21,13 @@ describe("User Functionality", () => {
     cy.url().should("include", "/");
   });
   it("Sucessfully signs out User", () => {
-    
     cy.visit("/profile");
-    cy.wait(1000);
     cy.get("button").contains("Sign Out").click();
     cy.wait(1000);
     cy.get("button").contains("Continue").click();
     cy.url().should("include", "/");
-    // expect(localStorage.getItem('isAuthenticated')).to.equal(false)
+    // expect(localStorage.getItem('isAuthenticated')).to.equal(false) 
+    //hmmmmmm
   });
 
 });

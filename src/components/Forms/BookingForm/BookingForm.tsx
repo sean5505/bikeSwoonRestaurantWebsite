@@ -42,6 +42,7 @@ export default function BookingForm(props: ReservationProps) {
   function onSubmit(data: ReservationData) {
     props.submitForm(data);
     setResData(data);
+    localStorage.setItem("reservation", JSON.stringify(data));
   }
 
   return (

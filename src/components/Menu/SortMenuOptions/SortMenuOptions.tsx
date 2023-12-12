@@ -8,6 +8,10 @@ type Props = {
   setSortedItems: React.Dispatch<
     React.SetStateAction<DocumentData[] | undefined>
   >;
+  setCurrentPage: React.Dispatch<
+    React.SetStateAction<number>
+  >;
+  
 };
 function sortByPrice(
   items: DocumentData[],
@@ -38,7 +42,7 @@ function filterItems(items: DocumentData[], searchText: string) {
   );
   return filteredItems;
 }
-function SortMenuOptions({ setSortedItems, menuItems }: Props) {
+function SortMenuOptions({ setSortedItems, menuItems, setCurrentPage }: Props) {
   const sortOptions = ["Main", "Appetizers", "Specials"];
   const [sortOrder, setSortOrder] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -50,6 +54,7 @@ function SortMenuOptions({ setSortedItems, menuItems }: Props) {
       const newSortedItems = sortByPrice(menuItems, newSortOrder, searchText);
       setSortedItems(newSortedItems);
       setSortOrder(newSortOrder);
+     
     }
   };
 
@@ -57,6 +62,7 @@ function SortMenuOptions({ setSortedItems, menuItems }: Props) {
     setSortedItems(menuItems);
     setSearchText("");
     setActiveButton("All");
+    setCurrentPage(1)
   };
 
   const filterByType = (type: string) => {
@@ -64,6 +70,7 @@ function SortMenuOptions({ setSortedItems, menuItems }: Props) {
       setSortedItems(filterItems(menuItems, type));
       setSearchText(type);
       setActiveButton(type);
+      setCurrentPage(1)
     }
   };
 

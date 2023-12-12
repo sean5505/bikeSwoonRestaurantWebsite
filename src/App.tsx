@@ -27,7 +27,6 @@ import { useAppSelector } from "./app/hooks";
 ></link>;
 
 export default function App() {
-
   const { resData } = useContext(ReservationContext);
   const cart = useAppSelector((state) => state.cart);
 
@@ -38,10 +37,9 @@ export default function App() {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        localStorage.setItem('isAuthenticated', 'true')
+        localStorage.setItem("isAuthenticated", "true");
       } else {
-
-        localStorage.setItem('isAuthenticated','false')
+        localStorage.setItem("isAuthenticated", "false");
       }
     });
     return () => {
@@ -49,11 +47,13 @@ export default function App() {
     };
   }, []);
 
- 
-  
   const RequireAuthentication = ({ children }: any) => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated') //firebase features inbuilt state persistance but that was persistently annoying 
-    return isAuthenticated === 'true' ? children : <Navigate to="/login" />;
+    const isAuthenticated = localStorage.getItem("isAuthenticated"); //firebase features inbuilt state persistance but that was persistently annoying
+    return isAuthenticated === "true" ? children : <Navigate to="/login" />;
+  };
+  const RequireLogin = ({ children }: any) => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated"); //firebase features inbuilt state persistance but that was persistently annoying
+    return isAuthenticated === "true" ? <Navigate to="/"/> : children ;
   };
   const RequireData = ({ children }: any) => {
     return resData ? children : <Navigate to="/reservations" />;
@@ -86,7 +86,14 @@ export default function App() {
             }
           />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <RequireLogin>
+                <Login />
+              </RequireLogin>
+            }
+          />
           <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={<About />} />
           <Route
@@ -94,7 +101,7 @@ export default function App() {
             element={
               <RequireAuthentication>
                 <Profile />
-             </RequireAuthentication>
+              </RequireAuthentication>
             }
           />
         </Routes>

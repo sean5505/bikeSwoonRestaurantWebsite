@@ -10,6 +10,7 @@ import style from "./MenuContainer.module.css";
 
 function MainMenuContainer() {
   const { theme } = useContext(ThemeContext);
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortedItems, setSortedItems] = useState<DocumentData[] | undefined>(); // will be used to, originally populate with the data from database, then manipulated with the set as the original object should never be mutated
   const { isPending, error, data } = useQuery<DocumentData[] | undefined>({
     queryKey: ["menuItemsDataa"],
@@ -46,10 +47,10 @@ function MainMenuContainer() {
           Main Menu
         </h2>
         <div>
-          <SortMenuOptions menuItems={data} setSortedItems={setSortedItems} />
+          <SortMenuOptions menuItems={data} setSortedItems={setSortedItems} setCurrentPage = {setCurrentPage} />
         </div>
         <div style={{ backgroundColor: theme.secondaryColor }}>
-          <MainMenuItems sortedItems={sortedItems} />
+          <MainMenuItems sortedItems={sortedItems} currentPage = {currentPage} setCurrentPage = {setCurrentPage} />
         </div>
       </section>
     </>

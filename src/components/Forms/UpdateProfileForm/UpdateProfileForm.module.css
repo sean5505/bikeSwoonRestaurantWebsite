@@ -21,6 +21,23 @@ label {
   gap: .5rem;
 }
 
+.formInput{
+  text-align: center;
+}
 .formInput input {
   width: 80%;
+}
+
+.passwordInput{
+  position: relative;
+}
+
+.togglePassword{
+  position: absolute;
+  right: 1.2rem;
+
+}
+
+.togglePassword:hover{
+  cursor: pointer;
 }

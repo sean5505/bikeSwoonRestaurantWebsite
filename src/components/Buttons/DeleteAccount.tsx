@@ -12,8 +12,9 @@ import { useState } from "react";
 import Modal from "../utils/Modal/Modal";
 
 function DeleteAccount() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [userProvidedPassword, setUserProvidedPassword] = useState<string>("");
+  const [showError, setShowError] = useState<boolean>(false)
 
   const credential = EmailAuthProvider.credential(
     auth.currentUser?.email ?? "",

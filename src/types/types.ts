@@ -46,7 +46,7 @@ export type ReservationData = {
     id: number;
     img: string;
     name: string;
-    price: string;
+    price: number;
     type: string;
     desc? : string;
     quantity? : number;

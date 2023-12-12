@@ -1,0 +1,14 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.active{
+    background-color: red;
+}
+
+.pagination button {
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+}

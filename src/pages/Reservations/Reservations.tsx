@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useReducer } from "react";
 
 import { fetchAPI, submitAPI } from "./reservationData.js";
@@ -48,10 +48,6 @@ export default function Reservations() {
   }
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("reservation", JSON.stringify(resData));
-  }, [resData]);
-
   return (
     <>
       <Layout>
@@ -82,6 +78,7 @@ export default function Reservations() {
             <button
               onClick={() => {
                 setResData(false);
+                localStorage.setItem("reservation", "");
                 toast.success("Booking Form Has Been Reset");
               }}
             >

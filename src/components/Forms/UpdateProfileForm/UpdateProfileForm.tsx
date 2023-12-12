@@ -1,5 +1,5 @@
 import style from "./UpdateProfileForm.module.css";
-import { UploadFile } from "@mui/icons-material";
+import { UploadFile, Visibility, VisibilityOff } from "@mui/icons-material";
 import { auth, fireStoreDB } from "../../../firebase";
 import {
   EmailAuthProvider,
@@ -22,6 +22,7 @@ type Props = {
 
 function UpdateProfileForm(props: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
   const [userProvidedPassword, setUserProvidedPassword] = useState<string>("");
 
   const credential = EmailAuthProvider.credential(
@@ -37,6 +38,10 @@ function UpdateProfileForm(props: Props) {
     setIsModalOpen(false);
     setUserProvidedPassword("");
   };
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -108,13 +113,16 @@ function UpdateProfileForm(props: Props) {
         </div>
         <div className={style.formInput}>
           <label>Password</label>
+          <div className={style.passwordInput}>
           <input
-            type="text"
+            type= {showPassword ? "text" : "password"}
             id="Password"
             minLength={8}
             value={props.userData.Password || ""}
             onChange={handleInput}
           />
+          <span className = {style.togglePassword} onClick={togglePassword}>{showPassword? <VisibilityOff/> : <Visibility />}</span>
+        </div>
         </div>
         <div className={style.formInput}>
           <label htmlFor="file">
