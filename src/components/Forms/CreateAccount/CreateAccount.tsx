@@ -7,11 +7,13 @@ import { toast } from "react-toastify";
 import { CreateAccountData } from "../../../types/types";
 import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, fireStoreDB } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
 
 // https://firebase.google.com/docs/auth/web/manage-users  --> could be interesting for an admin
 export default function CreateAccount() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate()
 
   const {
     register,
@@ -62,7 +64,7 @@ export default function CreateAccount() {
           CreationDate: serverTimestamp(),
           userID: userCredential.user.uid,
         });
-        
+        navigate('/')
         toast.success("Account Successfully Created");
       } catch (error) {
         console.log(error);
